@@ -1,0 +1,1610 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A modular NPC framework for Roblox.">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../tutorial/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>API - Puppet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Puppet" class="md-header__button md-logo" aria-label="Puppet" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Puppet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/CrossBeast/Puppet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CrossBeast/Puppet
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tutorial/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tutorial
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../troubleshooting/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Troubleshooting
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Puppet" class="md-nav__button md-logo" aria-label="Puppet" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    Puppet
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/CrossBeast/Puppet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CrossBeast/Puppet
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#puppet-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Puppet (Module)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Puppet (Module)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#puppetnew" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Puppet.new
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puppetregistercomponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Puppet.registerComponent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puppetsettickrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Puppet.setTickRate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puppetgettickrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Puppet.getTickRate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#puppetobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PuppetObject
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PuppetObject">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puppetobjectaddcomponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PuppetObject:AddComponent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puppetobjectremovecomponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PuppetObject:RemoveComponent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puppetobjectgetcomponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PuppetObject:GetComponent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puppetobjecthascomponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PuppetObject:HasComponent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puppetobjectsetaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PuppetObject:SetAction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puppetobjectgetaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PuppetObject:GetAction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puppetobjectclearaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PuppetObject:ClearAction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puppetobjectreconfigure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PuppetObject:Reconfigure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puppetobjectdestroy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PuppetObject:Destroy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#built-in-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in Components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#movement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Movement
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Movement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signals_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signals
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perception" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perception
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Perception">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detection-vs-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detection vs Tracking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signals_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signals
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patrol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Patrol
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patrol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wander" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wander
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wander">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#follow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Follow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Follow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Idle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Components
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="api-reference">API Reference</h1>
+<hr />
+<h2 id="puppet-module">Puppet (Module)</h2>
+<p>The entry point. Require this to create NPCs and register custom components.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Puppet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">require</span><span class="p">(</span><span class="nv">path</span><span class="p">.</span><span class="py">to</span><span class="p">.</span><span class="py">Puppet</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h3 id="puppetnew">Puppet.new</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Puppet.new(model, config?) --&gt; PuppetObject
+</code></pre></div>
+<p>Creates a new Puppet for the given Model.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>model</code></td>
+<td><code>Model</code></td>
+<td>Must have a <code>Humanoid</code> and <code>HumanoidRootPart</code>.</td>
+</tr>
+<tr>
+<td><code>config</code></td>
+<td><code>{ [string]: any }?</code></td>
+<td>Optional. Component configs keyed by lowercase name.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">npc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Puppet</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">npcModel</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nv">movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">walkSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nv">perception</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">visionRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="nv">threatTags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;Player&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nv">patrol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">points</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">pt1</span><span class="p">,</span><span class="w"> </span><span class="nv">pt2</span><span class="p">,</span><span class="w"> </span><span class="nv">pt3</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nv">waitTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">})</span>
+</code></pre></div>
+<p>Config keys are <strong>case-insensitive</strong> (<code>movement</code>, <code>Movement</code>, and <code>MOVEMENT</code> all work).</p>
+<p>Core components are created first (in dependency order), then the action is set. Only one action can be specified in the config — if multiple are given, the last one wins with a warning.</p>
+<p>The Puppet auto-destroys when:
+- The Model is destroyed
+- The Humanoid dies (Health reaches 0)
+- The HumanoidRootPart is removed</p>
+<hr />
+<h3 id="puppetregistercomponent">Puppet.registerComponent</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Puppet.registerComponent(name, componentClass)
+</code></pre></div>
+<p>Registers a custom component. Cannot override built-in components.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Must match <code>componentClass.Name</code>.</td>
+</tr>
+<tr>
+<td><code>componentClass</code></td>
+<td><code>table</code></td>
+<td>Must have <code>Name</code>, <code>Type</code>, <code>new</code>, <code>Init</code>, <code>Destroy</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="#custom-components">Custom Components</a> in the tutorial for the full interface.</p>
+<hr />
+<h3 id="puppetsettickrate">Puppet.setTickRate</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Puppet.setTickRate(hz)
+</code></pre></div>
+<p>Changes the update rate for all Puppets. Default and recommended is <strong>30hz</strong> — this means every component's <code>Update</code> method is called 30 times per second.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hz</code></td>
+<td><code>number</code></td>
+<td>Updates per second. Must be &gt; 0.</td>
+</tr>
+</tbody>
+</table>
+<p>Higher values (e.g. 60hz) make NPC reactions snappier and movement smoother, but cost more CPU since every component updates more frequently. Lower values (e.g. 10hz) are cheaper on performance but NPCs will feel less responsive — perception scans less often, stuck detection reacts slower, and actions update less frequently. 30hz is a good balance between responsiveness and performance for most games.</p>
+<hr />
+<h3 id="puppetgettickrate">Puppet.getTickRate</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Puppet.getTickRate() --&gt; number
+</code></pre></div>
+<p>Returns the current tick rate in hz.</p>
+<hr />
+<h2 id="puppetobject">PuppetObject</h2>
+<p>Returned by <code>Puppet.new()</code>. Manages components and lifecycle for a single NPC.</p>
+<h3 id="properties">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.Model</code></td>
+<td><code>Model</code></td>
+<td>The NPC's model. Read-only. <code>nil</code> after destroy.</td>
+</tr>
+<tr>
+<td><code>.Humanoid</code></td>
+<td><code>Humanoid</code></td>
+<td>The NPC's humanoid. Read-only. <code>nil</code> after destroy.</td>
+</tr>
+<tr>
+<td><code>.RootPart</code></td>
+<td><code>BasePart</code></td>
+<td>The HumanoidRootPart. Read-only. <code>nil</code> after destroy.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="signals">Signals</h3>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.ComponentAdded</code></td>
+<td><code>(name: string)</code></td>
+<td>Fires when a core component is added.</td>
+</tr>
+<tr>
+<td><code>.ComponentRemoved</code></td>
+<td><code>(name: string)</code></td>
+<td>Fires when a core component is removed.</td>
+</tr>
+<tr>
+<td><code>.ActionChanged</code></td>
+<td><code>(previousName: string?, newName: string?)</code></td>
+<td>Fires when the action changes.</td>
+</tr>
+<tr>
+<td><code>.Destroyed</code></td>
+<td><code>()</code></td>
+<td>Fires when the Puppet is destroyed.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="puppetobjectaddcomponent">PuppetObject:AddComponent</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>PuppetObject:AddComponent(name, config?)
+</code></pre></div>
+<p>Adds a core component. Errors if the component is an Action (use <code>SetAction</code> instead).</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Registered component name (e.g. <code>"Perception"</code>).</td>
+</tr>
+<tr>
+<td><code>config</code></td>
+<td><code>{ [string]: any }?</code></td>
+<td>Config passed to the component constructor.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="puppetobjectremovecomponent">PuppetObject:RemoveComponent</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>PuppetObject:RemoveComponent(name)
+</code></pre></div>
+<p>Removes a core component. Errors if another component or the active action depends on it.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Component to remove.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="puppetobjectgetcomponent">PuppetObject:GetComponent</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>PuppetObject:GetComponent(name) --&gt; component?
+</code></pre></div>
+<p>Returns the component instance, or <code>nil</code> if not present.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">npc</span><span class="p">:</span><span class="nf">GetComponent</span><span class="p">(</span><span class="s2">&quot;Movement&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nv">movement</span><span class="p">:</span><span class="nf">WalkTo</span><span class="p">(</span><span class="nv">targetPosition</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h3 id="puppetobjecthascomponent">PuppetObject:HasComponent</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>PuppetObject:HasComponent(name) --&gt; boolean
+</code></pre></div>
+<p>Returns <code>true</code> if the component is on this Puppet.</p>
+<hr />
+<h3 id="puppetobjectsetaction">PuppetObject:SetAction</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>PuppetObject:SetAction(name, config?)
+</code></pre></div>
+<p>Sets the active action. Automatically destroys the previous action. Errors if the component is a Core type.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Action name (e.g. <code>"Patrol"</code>, <code>"Follow"</code>).</td>
+</tr>
+<tr>
+<td><code>config</code></td>
+<td><code>{ [string]: any }?</code></td>
+<td>Config for the action.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nv">npc</span><span class="p">:</span><span class="nf">SetAction</span><span class="p">(</span><span class="s2">&quot;Follow&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">enemyModel</span><span class="p">,</span><span class="w"> </span><span class="nv">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">})</span>
+</code></pre></div>
+<hr />
+<h3 id="puppetobjectgetaction">PuppetObject:GetAction</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>PuppetObject:GetAction() --&gt; action?
+</code></pre></div>
+<p>Returns the current action instance, or <code>nil</code>.</p>
+<hr />
+<h3 id="puppetobjectclearaction">PuppetObject:ClearAction</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>PuppetObject:ClearAction()
+</code></pre></div>
+<p>Removes the current action without setting a new one. The NPC will have no active action until <code>SetAction</code> is called again.</p>
+<hr />
+<h3 id="puppetobjectreconfigure">PuppetObject:Reconfigure</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>PuppetObject:Reconfigure(config)
+</code></pre></div>
+<p>Replaces the entire component setup in one call. Removes components not in the new config, updates existing ones via <code>SetConfig</code>, adds new ones, and sets a new action.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config</code></td>
+<td><code>{ [string]: any }</code></td>
+<td>Same format as <code>Puppet.new</code> config.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nv">npc</span><span class="p">:</span><span class="nf">Reconfigure</span><span class="p">({</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="nv">movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">walkSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">22</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="nv">perception</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">visionRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="nv">visionAngle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">270</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="nv">wander</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">bossArena</span><span class="p">,</span><span class="w"> </span><span class="nv">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="p">})</span>
+</code></pre></div>
+<p>This is safe to call during updates — it bypasses the deferral mechanism.</p>
+<hr />
+<h3 id="puppetobjectdestroy">PuppetObject:Destroy</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>PuppetObject:Destroy()
+</code></pre></div>
+<p>Destroys the Puppet. Cleans up all components, disconnects all internal connections, fires the <code>Destroyed</code> signal. Calling <code>Destroy</code> multiple times is safe (no-op after the first).</p>
+<blockquote>
+<p><strong>Note:</strong> This does NOT destroy the Model. If you want to remove the NPC from the workspace, destroy the Model separately — or destroy the Model first and the Puppet will auto-cleanup.</p>
+</blockquote>
+<hr />
+<h2 id="built-in-components">Built-in Components</h2>
+<h3 id="movement">Movement</h3>
+<p><strong>Type:</strong> Core</p>
+<p>Handles pathfinding, direct movement, stuck detection, and walk speed.</p>
+<h4 id="config">Config</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>walkSpeed</code></td>
+<td><code>number</code></td>
+<td><code>12</code></td>
+<td>Humanoid WalkSpeed. Applied immediately.</td>
+</tr>
+<tr>
+<td><code>runSpeed</code></td>
+<td><code>number</code></td>
+<td><code>24</code></td>
+<td>Stored for developer use. Not auto-applied.</td>
+</tr>
+<tr>
+<td><code>arrivalRadius</code></td>
+<td><code>number</code></td>
+<td><code>4</code></td>
+<td>How close counts as "arrived" at a waypoint.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="methods">Methods</h4>
+<p><strong><code>:WalkTo(position) --&gt; boolean</code></strong></p>
+<p>Moves the NPC to the target position. Returns <code>true</code> if movement started, <code>false</code> on failure. Uses direct movement for short/clear paths, pathfinding for longer or obstructed ones.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">npc</span><span class="p">:</span><span class="nf">GetComponent</span><span class="p">(</span><span class="s2">&quot;Movement&quot;</span><span class="p">)</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kd">local</span><span class="w"> </span><span class="nv">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">movement</span><span class="p">:</span><span class="nf">WalkTo</span><span class="p">(</span><span class="nv">Vector3</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">))</span>
+</code></pre></div>
+<p><strong><code>:Stop()</code></strong></p>
+<p>Stops all movement immediately. Does not modify WalkSpeed.</p>
+<p><strong><code>:IsMoving() --&gt; boolean</code></strong></p>
+<p>Returns <code>true</code> if the NPC is actively moving to a destination.</p>
+<p><strong><code>:IsStuck() --&gt; boolean</code></strong></p>
+<p>Returns <code>true</code> if the NPC hasn't made progress for 2+ seconds.</p>
+<p><strong><code>:SetConfig(config)</code></strong></p>
+<p>Updates movement settings at runtime. WalkSpeed is applied to the Humanoid immediately.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nv">movement</span><span class="p">:</span><span class="nf">SetConfig</span><span class="p">({</span><span class="w"> </span><span class="nv">walkSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">28</span><span class="w"> </span><span class="p">})</span>
+</code></pre></div>
+<h4 id="signals_1">Signals</h4>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.ReachedDestination</code></td>
+<td>Fires when the NPC arrives at the WalkTo target.</td>
+</tr>
+<tr>
+<td><code>.Stuck</code></td>
+<td>Fires after 3 failed retry attempts (jumps + repath).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="perception">Perception</h3>
+<p><strong>Type:</strong> Core</p>
+<p>Vision cone detection with tracking awareness. Fires signals when threats are spotted or lost.</p>
+<h4 id="config_1">Config</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visionRange</code></td>
+<td><code>number</code></td>
+<td><code>60</code></td>
+<td>Max detection distance (studs).</td>
+</tr>
+<tr>
+<td><code>visionAngle</code></td>
+<td><code>number</code></td>
+<td><code>120</code></td>
+<td>Initial detection cone (degrees).</td>
+</tr>
+<tr>
+<td><code>trackingAngle</code></td>
+<td><code>number</code></td>
+<td><code>360</code></td>
+<td>Angle used for already-spotted targets.</td>
+</tr>
+<tr>
+<td><code>hearingRange</code></td>
+<td><code>number</code></td>
+<td><code>40</code></td>
+<td>Range for <code>CanHear</code> checks.</td>
+</tr>
+<tr>
+<td><code>perceptionInterval</code></td>
+<td><code>number</code></td>
+<td><code>0.2</code></td>
+<td>Seconds between scans.</td>
+</tr>
+<tr>
+<td><code>threatTags</code></td>
+<td><code>{ string }</code></td>
+<td><code>{ "Player" }</code></td>
+<td>CollectionService tags to scan for.</td>
+</tr>
+<tr>
+<td><code>maxChecks</code></td>
+<td><code>number</code></td>
+<td><code>10</code></td>
+<td>Max raycasts per scan (performance cap).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="detection-vs-tracking">Detection vs Tracking</h4>
+<p>When a target is <strong>first detected</strong>, Perception uses the <code>visionAngle</code> cone — the NPC must be facing them.</p>
+<p>Once a target is <strong>already tracked</strong> (was visible last scan), Perception uses <code>trackingAngle</code> instead (default: 360, omnidirectional). The only way to escape a tracking NPC is to:</p>
+<ul>
+<li>Get out of <code>visionRange</code></li>
+<li>Break line of sight behind geometry</li>
+</ul>
+<p>This prevents the common issue of targets escaping just by jumping behind the NPC.</p>
+<h4 id="methods_1">Methods</h4>
+<p><strong><code>:CanSee(target, overrideAngle?) --&gt; boolean</code></strong></p>
+<p>Checks if the target Model is within range, within the vision cone, and has clear line of sight. Optionally override the angle for custom checks.</p>
+<p><strong><code>:CanHear(position) --&gt; boolean</code></strong></p>
+<p>Returns <code>true</code> if the position is within <code>hearingRange</code>. Omnidirectional — no cone check.</p>
+<p><strong><code>:GetVisibleThreats() --&gt; { Model }</code></strong></p>
+<p>Returns all currently visible threats from the last scan.</p>
+<p><strong><code>:SetConfig(config)</code></strong></p>
+<p>Updates perception settings at runtime.</p>
+<h4 id="signals_2">Signals</h4>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.ThreatSpotted</code></td>
+<td><code>(target: Model)</code></td>
+<td>A new threat entered detection.</td>
+</tr>
+<tr>
+<td><code>.ThreatLost</code></td>
+<td><code>(target: Model)</code></td>
+<td>A previously tracked threat is no longer detected.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="patrol">Patrol</h3>
+<p><strong>Type:</strong> Action
+<strong>Requires:</strong> Movement</p>
+<p>Loops through a list of waypoints.</p>
+<h4 id="config_2">Config</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>points</code></td>
+<td><code>{ Vector3 }</code></td>
+<td><em>required</em></td>
+<td>Waypoints to cycle through. Any number of points.</td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>number</code></td>
+<td><code>1.0</code></td>
+<td>Seconds to wait at each point before advancing.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nv">npc</span><span class="p">:</span><span class="nf">SetAction</span><span class="p">(</span><span class="s2">&quot;Patrol&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span><span class="nv">points</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">pointA</span><span class="p">,</span><span class="w"> </span><span class="nv">pointB</span><span class="p">,</span><span class="w"> </span><span class="nv">pointC</span><span class="p">,</span><span class="w"> </span><span class="nv">pointD</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">    </span><span class="nv">waitTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="p">})</span>
+</code></pre></div>
+<p>The NPC cycles <code>A → B → C → D → A → B → ...</code> indefinitely.</p>
+<hr />
+<h3 id="wander">Wander</h3>
+<p><strong>Type:</strong> Action
+<strong>Requires:</strong> Movement</p>
+<p>Picks random points within a radius and walks to them.</p>
+<h4 id="config_3">Config</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>origin</code></td>
+<td><code>Vector3</code></td>
+<td>NPC's current position</td>
+<td>Center of the wander area.</td>
+</tr>
+<tr>
+<td><code>radius</code></td>
+<td><code>number</code></td>
+<td><code>20</code></td>
+<td>Max distance from origin.</td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>number</code></td>
+<td><code>2.0</code></td>
+<td>Seconds to wait between wander points.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nv">npc</span><span class="p">:</span><span class="nf">SetAction</span><span class="p">(</span><span class="s2">&quot;Wander&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span><span class="nv">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">guardPost</span><span class="p">,</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">    </span><span class="nv">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">    </span><span class="nv">waitTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="p">})</span>
+</code></pre></div>
+<p>Wander validates each random point with a ground raycast — it won't send the NPC off a cliff. A minimum distance is enforced so the NPC doesn't shuffle in place.</p>
+<hr />
+<h3 id="follow">Follow</h3>
+<p><strong>Type:</strong> Action
+<strong>Requires:</strong> Movement</p>
+<p>Follows a target Model, maintaining a set distance.</p>
+<h4 id="config_4">Config</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>target</code></td>
+<td><code>Model</code></td>
+<td><em>required</em></td>
+<td>The model to follow. Must exist.</td>
+</tr>
+<tr>
+<td><code>distance</code></td>
+<td><code>number</code></td>
+<td><code>10</code></td>
+<td>Desired distance from the target.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nv">npc</span><span class="p">:</span><span class="nf">SetAction</span><span class="p">(</span><span class="s2">&quot;Follow&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">    </span><span class="nv">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">playerCharacter</span><span class="p">,</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span><span class="nv">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="p">})</span>
+</code></pre></div>
+<p>Follow automatically clears itself if the target is destroyed. It has a built-in buffer zone to prevent micro-stepping — the NPC won't re-engage until the target moves meaningfully beyond the follow distance.</p>
+<hr />
+<h3 id="idle">Idle</h3>
+<p><strong>Type:</strong> Action</p>
+<p>Does nothing. Useful as a placeholder action when the NPC should stand still but you want to explicitly set an action state.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nv">npc</span><span class="p">:</span><span class="nf">SetAction</span><span class="p">(</span><span class="s2">&quot;Idle&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="custom-components">Custom Components</h2>
+<p>You can register your own components with <code>Puppet.registerComponent</code>. A component must implement this interface:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">MyComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="nv">MyComponent</span><span class="p">.</span><span class="py">__index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">MyComponent</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="nv">MyComponent</span><span class="p">.</span><span class="py">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;MyComponent&quot;</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="nv">MyComponent</span><span class="p">.</span><span class="py">Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Core&quot;</span><span class="w"> </span><span class="c1">-- or &quot;Action&quot;</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="nv">MyComponent</span><span class="p">.</span><span class="py">Requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;Movement&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">-- optional, list dependency names</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="kr">function</span><span class="w"> </span><span class="nc">MyComponent</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">puppet</span><span class="p">,</span><span class="w"> </span><span class="nv">config</span><span class="p">)</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">self</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">setmetatable</span><span class="p">({},</span><span class="w"> </span><span class="nv">MyComponent</span><span class="p">)</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">_puppet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">puppet</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="w">    </span><span class="c1">-- read config, set up state</span>
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a><span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">self</span>
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="kr">end</span>
+<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>
+<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="kr">function</span><span class="w"> </span><span class="nc">MyComponent</span><span class="p">:</span><span class="nf">Init</span><span class="p">()</span>
+<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a><span class="w">    </span><span class="c1">-- called after dependencies are injected</span>
+<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a><span class="w">    </span><span class="c1">-- self.Movement is available here if declared in Requires</span>
+<a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a><span class="kr">end</span>
+<a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a>
+<a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a><span class="kr">function</span><span class="w"> </span><span class="nc">MyComponent</span><span class="p">:</span><span class="nf">Update</span><span class="p">(</span><span class="nv">dt</span><span class="p">)</span>
+<a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a><span class="w">    </span><span class="c1">-- optional, called every tick (30hz by default)</span>
+<a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a><span class="kr">end</span>
+<a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a>
+<a id="__codelineno-24-24" name="__codelineno-24-24" href="#__codelineno-24-24"></a><span class="kr">function</span><span class="w"> </span><span class="nc">MyComponent</span><span class="p">:</span><span class="nf">SetConfig</span><span class="p">(</span><span class="nv">config</span><span class="p">)</span>
+<a id="__codelineno-24-25" name="__codelineno-24-25" href="#__codelineno-24-25"></a><span class="w">    </span><span class="c1">-- optional, called by Reconfigure to update settings</span>
+<a id="__codelineno-24-26" name="__codelineno-24-26" href="#__codelineno-24-26"></a><span class="kr">end</span>
+<a id="__codelineno-24-27" name="__codelineno-24-27" href="#__codelineno-24-27"></a>
+<a id="__codelineno-24-28" name="__codelineno-24-28" href="#__codelineno-24-28"></a><span class="kr">function</span><span class="w"> </span><span class="nc">MyComponent</span><span class="p">:</span><span class="nf">Destroy</span><span class="p">()</span>
+<a id="__codelineno-24-29" name="__codelineno-24-29" href="#__codelineno-24-29"></a><span class="w">    </span><span class="c1">-- cleanup connections, signals, etc.</span>
+<a id="__codelineno-24-30" name="__codelineno-24-30" href="#__codelineno-24-30"></a><span class="kr">end</span>
+<a id="__codelineno-24-31" name="__codelineno-24-31" href="#__codelineno-24-31"></a>
+<a id="__codelineno-24-32" name="__codelineno-24-32" href="#__codelineno-24-32"></a><span class="kr">return</span><span class="w"> </span><span class="nv">MyComponent</span>
+</code></pre></div>
+<p>Register it before creating any Puppets that use it:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nv">Puppet</span><span class="p">.</span><span class="nf">registerComponent</span><span class="p">(</span><span class="s2">&quot;MyComponent&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">require</span><span class="p">(</span><span class="nv">path</span><span class="p">.</span><span class="py">to</span><span class="p">.</span><span class="py">MyComponent</span><span class="p">))</span>
+</code></pre></div>
+<p>Then use it in configs like any built-in:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">npc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Puppet</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">model</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">    </span><span class="nv">movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{},</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">    </span><span class="nv">mycomponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">someSetting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="p">})</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

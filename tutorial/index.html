@@ -1,0 +1,1257 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A modular NPC framework for Roblox.">
+      
+      
+      
+      
+        <link rel="prev" href="../api/">
+      
+      
+        <link rel="next" href="../troubleshooting/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Tutorial - Puppet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Puppet" class="md-header__button md-logo" aria-label="Puppet" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Puppet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tutorial
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/CrossBeast/Puppet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CrossBeast/Puppet
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tutorial
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../troubleshooting/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Troubleshooting
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Puppet" class="md-nav__button md-logo" aria-label="Puppet" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    Puppet
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/CrossBeast/Puppet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CrossBeast/Puppet
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Started
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-your-first-npc-patrol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Your first NPC — Patrol
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-wander" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Wander
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-follow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Follow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-swapping-actions-at-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Swapping actions at runtime
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-perception-detecting-threats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Perception — detecting threats
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Perception — detecting threats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tracking-vs-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tracking vs Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-changing-speed-at-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Changing speed at runtime
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Changing speed at runtime">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#movement-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Movement signals
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-reconfigure-changing-everything-at-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Reconfigure — changing everything at once
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Reconfigure — changing everything at once">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addcomponent-and-removecomponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AddComponent and RemoveComponent
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-death-and-respawn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Death and respawn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-listening-to-lifecycle-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Listening to lifecycle events
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-custom-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Custom components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Custom components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-from-outside" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Register from outside
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drop-in-add-to-the-components-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Drop-in: add to the Components folder
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-optimization-and-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Optimization and replication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Optimization and replication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#puppets-overhead" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Puppet's overhead
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-a-replication-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using a replication module
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-your-own-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building your own replication
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="tutorial">Tutorial</h1>
+<hr />
+<h2 id="getting-started">Getting Started</h2>
+<p>Download Puppet from <a href="https://github.com/CrossBeast/Puppet">GitHub</a> or the <a href="https://create.roblox.com/store/asset/139690896215004/Puppet">Roblox Creator Store</a>. Place the <code>Puppet</code> module in <code>ServerScriptService</code>.</p>
+<p>Then require it from any server script:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Puppet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">require</span><span class="p">(</span><span class="nv">game</span><span class="p">.</span><span class="py">ServerScriptService</span><span class="p">.</span><span class="py">Puppet</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>Puppet runs on the <strong>server only</strong>. All NPC logic is server-authoritative.</p>
+</blockquote>
+<hr />
+<h2 id="1-your-first-npc-patrol">1. Your first NPC — Patrol</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Puppet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">require</span><span class="p">(</span><span class="nv">game</span><span class="p">.</span><span class="py">ServerScriptService</span><span class="p">.</span><span class="py">Puppet</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">-- Any Model with a Humanoid + HumanoidRootPart works</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kd">local</span><span class="w"> </span><span class="nv">npcModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">workspace</span><span class="p">.</span><span class="py">GuardNPC</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kd">local</span><span class="w"> </span><span class="nv">npc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Puppet</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">npcModel</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nv">movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">walkSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nv">patrol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="nv">points</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">            </span><span class="nv">Vector3</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">            </span><span class="nv">Vector3</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">            </span><span class="nv">Vector3</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">),</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">            </span><span class="nv">Vector3</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">),</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="nv">waitTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="p">})</span>
+</code></pre></div>
+<p>The NPC patrols between the given points, waiting 1.5 seconds at each one before moving to the next.</p>
+<hr />
+<h2 id="2-wander">2. Wander</h2>
+<p>An NPC that roams randomly around an area:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">npc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Puppet</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">npcModel</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nv">movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">walkSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nv">wander</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="nv">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">npcModel</span><span class="p">.</span><span class="py">HumanoidRootPart</span><span class="p">.</span><span class="py">Position</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="nv">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="nv">waitTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">})</span>
+</code></pre></div>
+<p>The NPC picks random points within 25 studs of its origin and walks to them. It validates each point with a ground raycast, so it won't walk off edges.</p>
+<hr />
+<h2 id="3-follow">3. Follow</h2>
+<p>An NPC that follows another model:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">workspace</span><span class="p">.</span><span class="py">SomeOtherNPC</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">npc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Puppet</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">npcModel</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nv">movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">walkSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nv">follow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="nv">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">target</span><span class="p">,</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="nv">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">})</span>
+</code></pre></div>
+<p>The NPC maintains ~8 studs from the target. If the target is destroyed, Follow automatically clears itself.</p>
+<hr />
+<h2 id="4-swapping-actions-at-runtime">4. Swapping actions at runtime</h2>
+<p>Actions are exclusive — setting a new one replaces the old:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">npc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Puppet</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">npcModel</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nv">movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">walkSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nv">idle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{},</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">})</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1">-- Start patrolling</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nv">npc</span><span class="p">:</span><span class="nf">SetAction</span><span class="p">(</span><span class="s2">&quot;Patrol&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="nv">points</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">pointA</span><span class="p">,</span><span class="w"> </span><span class="nv">pointB</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nv">waitTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">})</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="c1">-- Switch to follow</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="nv">npc</span><span class="p">:</span><span class="nf">SetAction</span><span class="p">(</span><span class="s2">&quot;Follow&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="nv">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">playerCharacter</span><span class="p">,</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="nv">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="p">})</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="c1">-- Stop everything</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="nv">npc</span><span class="p">:</span><span class="nf">ClearAction</span><span class="p">()</span>
+</code></pre></div>
+<p>The old action is cleaned up automatically — connections disconnected, movement stopped.</p>
+<hr />
+<h2 id="5-perception-detecting-threats">5. Perception — detecting threats</h2>
+<p>Add Perception to make the NPC aware of its surroundings:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">CollectionService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">game</span><span class="p">:</span><span class="nf">GetService</span><span class="p">(</span><span class="s2">&quot;CollectionService&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1">-- Tag player characters so Perception can find them</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nv">Players</span><span class="p">.</span><span class="py">PlayerAdded</span><span class="p">:</span><span class="nf">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">player</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nv">player</span><span class="p">.</span><span class="py">CharacterAdded</span><span class="p">:</span><span class="nf">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">character</span><span class="p">)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span><span class="nv">CollectionService</span><span class="p">:</span><span class="nf">AddTag</span><span class="p">(</span><span class="nv">character</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Enemy&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="kr">end</span><span class="p">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="kr">end</span><span class="p">)</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1">-- Create an NPC with perception + idle</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="kd">local</span><span class="w"> </span><span class="nv">npc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Puppet</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">npcModel</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="nv">movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">walkSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="nv">perception</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">        </span><span class="nv">visionRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span><span class="nv">visionAngle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">160</span><span class="p">,</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="nv">threatTags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;Enemy&quot;</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="nv">idle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{},</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="p">})</span>
+</code></pre></div>
+<p>Perception includes signals for when threats are detected or lost. You decide what to do when they fire:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">perc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">npc</span><span class="p">:</span><span class="nf">GetComponent</span><span class="p">(</span><span class="s2">&quot;Perception&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nv">perc</span><span class="p">.</span><span class="py">ThreatSpotted</span><span class="p">:</span><span class="nf">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">target</span><span class="p">)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nv">npc</span><span class="p">:</span><span class="nf">SetAction</span><span class="p">(</span><span class="s2">&quot;Follow&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">target</span><span class="p">,</span><span class="w"> </span><span class="nv">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">})</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="kr">end</span><span class="p">)</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nv">perc</span><span class="p">.</span><span class="py">ThreatLost</span><span class="p">:</span><span class="nf">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">target</span><span class="p">)</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="nv">npc</span><span class="p">:</span><span class="nf">SetAction</span><span class="p">(</span><span class="s2">&quot;Idle&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="kr">end</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="tracking-vs-detection">Tracking vs Detection</h3>
+<p>Once Perception spots a target, it uses a wider tracking angle (360° by default) to keep detecting them. The target can't escape just by stepping behind the NPC — they need to get out of <code>visionRange</code> or break line of sight behind geometry.</p>
+<p>You can customize this:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nv">perception</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="nv">visionAngle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">     </span><span class="c1">-- narrow cone for initial detection</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nv">trackingAngle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">240</span><span class="p">,</span><span class="w">   </span><span class="c1">-- wider but not full 360 for tracking</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="6-changing-speed-at-runtime">6. Changing speed at runtime</h2>
+<p>Use <code>SetConfig</code> on any component to update settings without recreating it:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">npc</span><span class="p">:</span><span class="nf">GetComponent</span><span class="p">(</span><span class="s2">&quot;Movement&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1">-- Slow down (debuff, swamp, etc.)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nv">movement</span><span class="p">:</span><span class="nf">SetConfig</span><span class="p">({</span><span class="w"> </span><span class="nv">walkSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="p">})</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1">-- Speed up</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nv">movement</span><span class="p">:</span><span class="nf">SetConfig</span><span class="p">({</span><span class="w"> </span><span class="nv">walkSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">28</span><span class="w"> </span><span class="p">})</span>
+</code></pre></div>
+<p>WalkSpeed is applied to the Humanoid immediately, even mid-movement.</p>
+<p>You can also change the global tick rate for all Puppets:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nv">Puppet</span><span class="p">.</span><span class="nf">setTickRate</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span><span class="w"> </span><span class="c1">-- smoother but more CPU</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nv">Puppet</span><span class="p">.</span><span class="nf">setTickRate</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="c1">-- cheaper but less responsive</span>
+</code></pre></div>
+<h3 id="movement-signals">Movement signals</h3>
+<p>Movement fires signals you can listen to for custom behavior:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">npc</span><span class="p">:</span><span class="nf">GetComponent</span><span class="p">(</span><span class="s2">&quot;Movement&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nv">movement</span><span class="p">.</span><span class="py">ReachedDestination</span><span class="p">:</span><span class="nf">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Arrived!&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="kr">end</span><span class="p">)</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nv">movement</span><span class="p">.</span><span class="py">Stuck</span><span class="p">:</span><span class="nf">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Can&#39;t reach destination&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="kr">end</span><span class="p">)</span>
+</code></pre></div>
+<p><code>ReachedDestination</code> fires when the NPC arrives at a <code>WalkTo</code> target. <code>Stuck</code> fires after multiple failed attempts to make progress (jumps + repath).</p>
+<hr />
+<h2 id="7-reconfigure-changing-everything-at-once">7. Reconfigure — changing everything at once</h2>
+<p><code>Reconfigure</code> replaces the entire component setup in one call. It removes components not in the new config, updates existing ones, adds new ones, and sets a new action. An example use case is NPC bosses with different phases that call for different behaviors:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">npc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Puppet</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">bossModel</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="nv">movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">walkSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="nv">perception</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">visionRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="nv">visionAngle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="nv">patrol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">        </span><span class="nv">points</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">pt1</span><span class="p">,</span><span class="w"> </span><span class="nv">pt2</span><span class="p">,</span><span class="w"> </span><span class="nv">pt3</span><span class="p">,</span><span class="w"> </span><span class="nv">pt4</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">        </span><span class="nv">waitTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="p">})</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="c1">-- You can define configs ahead of time</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="kd">local</span><span class="w"> </span><span class="nv">phase2Config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">    </span><span class="nv">movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">walkSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">22</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">    </span><span class="nv">perception</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">visionRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="nv">visionAngle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">270</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">    </span><span class="nv">wander</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">arenaCenter</span><span class="p">,</span><span class="w"> </span><span class="nv">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="p">}</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="kd">local</span><span class="w"> </span><span class="nv">phase3Config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="w">    </span><span class="nv">movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">walkSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="w">    </span><span class="nv">patrol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="w">        </span><span class="nv">points</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">corner1</span><span class="p">,</span><span class="w"> </span><span class="nv">corner2</span><span class="p">,</span><span class="w"> </span><span class="nv">corner3</span><span class="p">,</span><span class="w"> </span><span class="nv">corner4</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">        </span><span class="nv">waitTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="p">}</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a>
+<a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="c1">-- Then apply them when needed</span>
+<a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="nv">task</span><span class="p">.</span><span class="nf">delay</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">()</span>
+<a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="w">    </span><span class="nv">npc</span><span class="p">:</span><span class="nf">Reconfigure</span><span class="p">(</span><span class="nv">phase2Config</span><span class="p">)</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="kr">end</span><span class="p">)</span>
+<a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a>
+<a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a><span class="nv">task</span><span class="p">.</span><span class="nf">delay</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">()</span>
+<a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a><span class="w">    </span><span class="nv">npc</span><span class="p">:</span><span class="nf">Reconfigure</span><span class="p">(</span><span class="nv">phase3Config</span><span class="p">)</span>
+<a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a><span class="kr">end</span><span class="p">)</span>
+</code></pre></div>
+<p>You can also pass the config inline:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nv">npc</span><span class="p">:</span><span class="nf">Reconfigure</span><span class="p">({</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="nv">movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">walkSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">22</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="nv">wander</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">arenaCenter</span><span class="p">,</span><span class="w"> </span><span class="nv">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="p">})</span>
+</code></pre></div>
+<h3 id="addcomponent-and-removecomponent">AddComponent and RemoveComponent</h3>
+<p>If you only need to add or remove a single core component without replacing the entire config, use <code>AddComponent</code> and <code>RemoveComponent</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">-- Add perception to an existing NPC</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nv">npc</span><span class="p">:</span><span class="nf">AddComponent</span><span class="p">(</span><span class="s2">&quot;Perception&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">visionRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="nv">threatTags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;Player&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">})</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1">-- Later, remove it</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nv">npc</span><span class="p">:</span><span class="nf">RemoveComponent</span><span class="p">(</span><span class="s2">&quot;Perception&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>These are useful when you want to modify one part of the NPC without affecting the rest. <code>Reconfigure</code> is better when you're changing multiple things at once — like swapping out the action, updating movement speed, and adding/removing components all in one call.</p>
+<p>Note: <code>RemoveComponent</code> will error if another component or the active action depends on it. Clear the dependent action first:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">-- This would error because Follow requires Movement</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nv">npc</span><span class="p">:</span><span class="nf">RemoveComponent</span><span class="p">(</span><span class="s2">&quot;Movement&quot;</span><span class="p">)</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1">-- Clear the action first, then remove</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nv">npc</span><span class="p">:</span><span class="nf">ClearAction</span><span class="p">()</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="nv">npc</span><span class="p">:</span><span class="nf">RemoveComponent</span><span class="p">(</span><span class="s2">&quot;Movement&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="8-death-and-respawn">8. Death and respawn</h2>
+<p>Puppet auto-destroys when the Humanoid dies. The PuppetObject is gone at that point — if you want to respawn the NPC, you need to create a new model and a new Puppet for it:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">spawnGuard</span><span class="p">(</span><span class="nv">position</span><span class="p">)</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">createNPCModel</span><span class="p">(</span><span class="nv">position</span><span class="p">)</span><span class="w"> </span><span class="c1">-- your function</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">npc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Puppet</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">model</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">        </span><span class="nv">movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">walkSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">        </span><span class="nv">wander</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">position</span><span class="p">,</span><span class="w"> </span><span class="nv">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">    </span><span class="p">})</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">    </span><span class="nv">npc</span><span class="p">.</span><span class="py">Destroyed</span><span class="p">:</span><span class="nf">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">        </span><span class="c1">-- Clean up the dead body</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="nv">model</span><span class="p">.</span><span class="py">Parent</span><span class="w"> </span><span class="kr">then</span><span class="w"> </span><span class="nv">model</span><span class="p">:</span><span class="nf">Destroy</span><span class="p">()</span><span class="w"> </span><span class="kr">end</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">        </span><span class="c1">-- Respawn after 5 seconds with the same config</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">        </span><span class="nv">task</span><span class="p">.</span><span class="nf">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">()</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">            </span><span class="nf">spawnGuard</span><span class="p">(</span><span class="nv">position</span><span class="p">)</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="w">        </span><span class="kr">end</span><span class="p">)</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="w">    </span><span class="kr">end</span><span class="p">)</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="kr">end</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="nf">spawnGuard</span><span class="p">(</span><span class="nv">Vector3</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+<hr />
+<h2 id="9-listening-to-lifecycle-events">9. Listening to lifecycle events</h2>
+<p>Track what's happening on a Puppet:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nv">npc</span><span class="p">.</span><span class="py">ComponentAdded</span><span class="p">:</span><span class="nf">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">name</span><span class="p">)</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Added component:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">name</span><span class="p">)</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="kr">end</span><span class="p">)</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="nv">npc</span><span class="p">.</span><span class="py">ComponentRemoved</span><span class="p">:</span><span class="nf">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">name</span><span class="p">)</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Removed component:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">name</span><span class="p">)</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="kr">end</span><span class="p">)</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="nv">npc</span><span class="p">.</span><span class="py">ActionChanged</span><span class="p">:</span><span class="nf">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">previousAction</span><span class="p">,</span><span class="w"> </span><span class="nv">newAction</span><span class="p">)</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Action:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">previousAction</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">newAction</span><span class="p">)</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="kr">end</span><span class="p">)</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="nv">npc</span><span class="p">.</span><span class="py">Destroyed</span><span class="p">:</span><span class="nf">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NPC destroyed&quot;</span><span class="p">)</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="kr">end</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="10-custom-components">10. Custom components</h2>
+<p>Puppet is expandable — you can create your own Core and Action components.</p>
+<p>A component must have: <code>Name</code>, <code>Type</code> (<code>"Core"</code> or <code>"Action"</code>), <code>new()</code>, <code>Init()</code>, and <code>Destroy()</code>. Optionally: <code>Update(dt)</code>, <code>SetConfig(config)</code>, and <code>Requires</code> (a list of dependency names).</p>
+<h3 id="register-from-outside">Register from outside</h3>
+<p>Use <code>Puppet.registerComponent</code> when a component is specific to a particular game system or NPC type. The component lives in your game code, not inside the Puppet folder.</p>
+<p>This example creates an <strong>Aggro</strong> component — a Core component that tracks how much damage each player has dealt to this NPC. Whoever has dealt the most (minus natural decay over time) is considered the highest threat. Other game code can read this to decide who the NPC should target:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1">-- ServerScriptService.MyGame.Aggro</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Signal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">require</span><span class="p">(</span><span class="nv">game</span><span class="p">.</span><span class="py">ServerScriptService</span><span class="p">.</span><span class="py">Puppet</span><span class="p">.</span><span class="py">Packages</span><span class="p">.</span><span class="py">Signal</span><span class="p">)</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Aggro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="nv">Aggro</span><span class="p">.</span><span class="py">__index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Aggro</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="nv">Aggro</span><span class="p">.</span><span class="py">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Aggro&quot;</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="nv">Aggro</span><span class="p">.</span><span class="py">Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Core&quot;</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="kr">function</span><span class="w"> </span><span class="nc">Aggro</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">puppet</span><span class="p">,</span><span class="w"> </span><span class="nv">config</span><span class="p">)</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">self</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">setmetatable</span><span class="p">({},</span><span class="w"> </span><span class="nv">Aggro</span><span class="p">)</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">_puppet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">puppet</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">_threats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">-- [player] = aggroValue</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">_decayRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">config</span><span class="p">.</span><span class="py">decayRate</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="mi">5</span>
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">HighestThreatChanged</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Signal</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">self</span>
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="kr">end</span>
+<a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a>
+<a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a><span class="kr">function</span><span class="w"> </span><span class="nc">Aggro</span><span class="p">:</span><span class="nf">Init</span><span class="p">()</span><span class="w"> </span><span class="kr">end</span>
+<a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a>
+<a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a><span class="kr">function</span><span class="w"> </span><span class="nc">Aggro</span><span class="p">:</span><span class="nf">Update</span><span class="p">(</span><span class="nv">dt</span><span class="p">)</span>
+<a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a><span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">player</span><span class="p">,</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">_threats</span><span class="w"> </span><span class="kr">do</span>
+<a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">_threats</span><span class="p">[</span><span class="nv">player</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">_decayRate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">dt</span><span class="p">)</span>
+<a id="__codelineno-17-26" name="__codelineno-17-26" href="#__codelineno-17-26"></a><span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">_threats</span><span class="p">[</span><span class="nv">player</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="kr">then</span>
+<a id="__codelineno-17-27" name="__codelineno-17-27" href="#__codelineno-17-27"></a><span class="w">            </span><span class="nv">self</span><span class="p">.</span><span class="py">_threats</span><span class="p">[</span><span class="nv">player</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">nil</span>
+<a id="__codelineno-17-28" name="__codelineno-17-28" href="#__codelineno-17-28"></a><span class="w">        </span><span class="kr">end</span>
+<a id="__codelineno-17-29" name="__codelineno-17-29" href="#__codelineno-17-29"></a><span class="w">    </span><span class="kr">end</span>
+<a id="__codelineno-17-30" name="__codelineno-17-30" href="#__codelineno-17-30"></a><span class="kr">end</span>
+<a id="__codelineno-17-31" name="__codelineno-17-31" href="#__codelineno-17-31"></a>
+<a id="__codelineno-17-32" name="__codelineno-17-32" href="#__codelineno-17-32"></a><span class="kr">function</span><span class="w"> </span><span class="nc">Aggro</span><span class="p">:</span><span class="nf">AddAggro</span><span class="p">(</span><span class="nv">player</span><span class="p">,</span><span class="w"> </span><span class="nv">amount</span><span class="p">)</span>
+<a id="__codelineno-17-33" name="__codelineno-17-33" href="#__codelineno-17-33"></a><span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">_threats</span><span class="p">[</span><span class="nv">player</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">_threats</span><span class="p">[</span><span class="nv">player</span><span class="p">]</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">amount</span>
+<a id="__codelineno-17-34" name="__codelineno-17-34" href="#__codelineno-17-34"></a><span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">HighestThreatChanged</span><span class="p">:</span><span class="nf">Fire</span><span class="p">(</span><span class="nv">self</span><span class="p">:</span><span class="nf">GetHighestThreat</span><span class="p">())</span>
+<a id="__codelineno-17-35" name="__codelineno-17-35" href="#__codelineno-17-35"></a><span class="kr">end</span>
+<a id="__codelineno-17-36" name="__codelineno-17-36" href="#__codelineno-17-36"></a>
+<a id="__codelineno-17-37" name="__codelineno-17-37" href="#__codelineno-17-37"></a><span class="kr">function</span><span class="w"> </span><span class="nc">Aggro</span><span class="p">:</span><span class="nf">GetHighestThreat</span><span class="p">()</span>
+<a id="__codelineno-17-38" name="__codelineno-17-38" href="#__codelineno-17-38"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">highest</span><span class="p">,</span><span class="w"> </span><span class="nv">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<a id="__codelineno-17-39" name="__codelineno-17-39" href="#__codelineno-17-39"></a><span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">player</span><span class="p">,</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">_threats</span><span class="w"> </span><span class="kr">do</span>
+<a id="__codelineno-17-40" name="__codelineno-17-40" href="#__codelineno-17-40"></a><span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nv">highest</span><span class="w"> </span><span class="kr">then</span>
+<a id="__codelineno-17-41" name="__codelineno-17-41" href="#__codelineno-17-41"></a><span class="w">            </span><span class="nv">highest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">value</span>
+<a id="__codelineno-17-42" name="__codelineno-17-42" href="#__codelineno-17-42"></a><span class="w">            </span><span class="nv">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">player</span>
+<a id="__codelineno-17-43" name="__codelineno-17-43" href="#__codelineno-17-43"></a><span class="w">        </span><span class="kr">end</span>
+<a id="__codelineno-17-44" name="__codelineno-17-44" href="#__codelineno-17-44"></a><span class="w">    </span><span class="kr">end</span>
+<a id="__codelineno-17-45" name="__codelineno-17-45" href="#__codelineno-17-45"></a><span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">target</span>
+<a id="__codelineno-17-46" name="__codelineno-17-46" href="#__codelineno-17-46"></a><span class="kr">end</span>
+<a id="__codelineno-17-47" name="__codelineno-17-47" href="#__codelineno-17-47"></a>
+<a id="__codelineno-17-48" name="__codelineno-17-48" href="#__codelineno-17-48"></a><span class="kr">function</span><span class="w"> </span><span class="nc">Aggro</span><span class="p">:</span><span class="nf">Destroy</span><span class="p">()</span>
+<a id="__codelineno-17-49" name="__codelineno-17-49" href="#__codelineno-17-49"></a><span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">HighestThreatChanged</span><span class="p">:</span><span class="nf">Destroy</span><span class="p">()</span>
+<a id="__codelineno-17-50" name="__codelineno-17-50" href="#__codelineno-17-50"></a><span class="kr">end</span>
+<a id="__codelineno-17-51" name="__codelineno-17-51" href="#__codelineno-17-51"></a>
+<a id="__codelineno-17-52" name="__codelineno-17-52" href="#__codelineno-17-52"></a><span class="kr">return</span><span class="w"> </span><span class="nv">Aggro</span>
+</code></pre></div>
+<p>Register it in your game script before creating Puppets that use it:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Puppet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">require</span><span class="p">(</span><span class="nv">game</span><span class="p">.</span><span class="py">ServerScriptService</span><span class="p">.</span><span class="py">Puppet</span><span class="p">)</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Aggro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">require</span><span class="p">(</span><span class="nv">game</span><span class="p">.</span><span class="py">ServerScriptService</span><span class="p">.</span><span class="py">MyGame</span><span class="p">.</span><span class="py">Aggro</span><span class="p">)</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="nv">Puppet</span><span class="p">.</span><span class="nf">registerComponent</span><span class="p">(</span><span class="s2">&quot;Aggro&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">Aggro</span><span class="p">)</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="kd">local</span><span class="w"> </span><span class="nv">boss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Puppet</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">bossModel</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">    </span><span class="nv">movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">walkSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">    </span><span class="nv">aggro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">decayRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="w">    </span><span class="nv">patrol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">points</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">ptA</span><span class="p">,</span><span class="w"> </span><span class="nv">ptB</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nv">waitTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="p">})</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="c1">-- When a player deals damage, add aggro</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="kd">local</span><span class="w"> </span><span class="nv">aggro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">boss</span><span class="p">:</span><span class="nf">GetComponent</span><span class="p">(</span><span class="s2">&quot;Aggro&quot;</span><span class="p">)</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="nv">aggro</span><span class="p">:</span><span class="nf">AddAggro</span><span class="p">(</span><span class="nv">player</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">)</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="c1">-- Chase whoever has the most aggro</span>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="nv">aggro</span><span class="p">.</span><span class="py">HighestThreatChanged</span><span class="p">:</span><span class="nf">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">target</span><span class="p">)</span>
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">target</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">target</span><span class="p">.</span><span class="py">Character</span><span class="w"> </span><span class="kr">then</span>
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="w">        </span><span class="nv">boss</span><span class="p">:</span><span class="nf">SetAction</span><span class="p">(</span><span class="s2">&quot;Follow&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">target</span><span class="p">.</span><span class="py">Character</span><span class="p">,</span><span class="w"> </span><span class="nv">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">})</span>
+<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="w">    </span><span class="kr">end</span>
+<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a><span class="kr">end</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="drop-in-add-to-the-components-folder">Drop-in: add to the Components folder</h3>
+<p>For components generic enough to be reusable across projects, drop a ModuleScript directly into <code>Puppet/Components/Core/</code> or <code>Puppet/Components/Action/</code>. Puppet auto-discovers it on startup — no registration needed.</p>
+<p>This example creates a <strong>Flee</strong> action — the opposite of Follow. The NPC runs away from a threat until it reaches a safe distance, then clears its action. It requires Movement to move the NPC:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1">-- ServerScriptService.Puppet.Components.Action.Flee</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Packages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">script</span><span class="p">.</span><span class="py">Parent</span><span class="p">.</span><span class="py">Parent</span><span class="p">.</span><span class="py">Parent</span><span class="p">.</span><span class="py">Packages</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Flee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="nv">Flee</span><span class="p">.</span><span class="py">__index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Flee</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="nv">Flee</span><span class="p">.</span><span class="py">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Flee&quot;</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="nv">Flee</span><span class="p">.</span><span class="py">Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Action&quot;</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="nv">Flee</span><span class="p">.</span><span class="py">Requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;Movement&quot;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="kr">function</span><span class="w"> </span><span class="nc">Flee</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">puppet</span><span class="p">,</span><span class="w"> </span><span class="nv">config</span><span class="p">)</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">self</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">setmetatable</span><span class="p">({},</span><span class="w"> </span><span class="nv">Flee</span><span class="p">)</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">_puppet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">puppet</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">_threat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">config</span><span class="p">.</span><span class="py">threat</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">_fleeDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">config</span><span class="p">.</span><span class="py">fleeDistance</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="mi">50</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">Movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="c1">-- injected via Requires</span>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">self</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="kr">end</span>
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>
+<a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a><span class="kr">function</span><span class="w"> </span><span class="nc">Flee</span><span class="p">:</span><span class="nf">Init</span><span class="p">()</span>
+<a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a><span class="w">    </span><span class="nv">self</span><span class="p">:</span><span class="nf">_runAway</span><span class="p">()</span>
+<a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a><span class="kr">end</span>
+<a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a>
+<a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a><span class="kr">function</span><span class="w"> </span><span class="nc">Flee</span><span class="p">:</span><span class="nf">Update</span><span class="p">(</span><span class="nv">dt</span><span class="p">)</span>
+<a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">_threat</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">_threat</span><span class="p">.</span><span class="py">Parent</span><span class="w"> </span><span class="kr">then</span>
+<a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">_puppet</span><span class="p">:</span><span class="nf">ClearAction</span><span class="p">()</span>
+<a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a><span class="w">        </span><span class="kr">return</span>
+<a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a><span class="w">    </span><span class="kr">end</span>
+<a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a>
+<a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">threatRoot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">_threat</span><span class="p">:</span><span class="nf">FindFirstChild</span><span class="p">(</span><span class="s2">&quot;HumanoidRootPart&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-32" name="__codelineno-19-32" href="#__codelineno-19-32"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">threatRoot</span><span class="w"> </span><span class="kr">then</span><span class="w"> </span><span class="kr">return</span><span class="w"> </span><span class="kr">end</span>
+<a id="__codelineno-19-33" name="__codelineno-19-33" href="#__codelineno-19-33"></a>
+<a id="__codelineno-19-34" name="__codelineno-19-34" href="#__codelineno-19-34"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">_puppet</span><span class="p">.</span><span class="py">RootPart</span><span class="p">.</span><span class="py">Position</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">threatRoot</span><span class="p">.</span><span class="py">Position</span><span class="p">).</span><span class="nv">Magnitude</span>
+<a id="__codelineno-19-35" name="__codelineno-19-35" href="#__codelineno-19-35"></a>
+<a id="__codelineno-19-36" name="__codelineno-19-36" href="#__codelineno-19-36"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">distance</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">_fleeDistance</span><span class="w"> </span><span class="kr">then</span>
+<a id="__codelineno-19-37" name="__codelineno-19-37" href="#__codelineno-19-37"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">_puppet</span><span class="p">:</span><span class="nf">ClearAction</span><span class="p">()</span>
+<a id="__codelineno-19-38" name="__codelineno-19-38" href="#__codelineno-19-38"></a><span class="w">        </span><span class="kr">return</span>
+<a id="__codelineno-19-39" name="__codelineno-19-39" href="#__codelineno-19-39"></a><span class="w">    </span><span class="kr">end</span>
+<a id="__codelineno-19-40" name="__codelineno-19-40" href="#__codelineno-19-40"></a>
+<a id="__codelineno-19-41" name="__codelineno-19-41" href="#__codelineno-19-41"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">Movement</span><span class="p">:</span><span class="nf">IsMoving</span><span class="p">()</span><span class="w"> </span><span class="kr">then</span>
+<a id="__codelineno-19-42" name="__codelineno-19-42" href="#__codelineno-19-42"></a><span class="w">        </span><span class="nv">self</span><span class="p">:</span><span class="nf">_runAway</span><span class="p">()</span>
+<a id="__codelineno-19-43" name="__codelineno-19-43" href="#__codelineno-19-43"></a><span class="w">    </span><span class="kr">end</span>
+<a id="__codelineno-19-44" name="__codelineno-19-44" href="#__codelineno-19-44"></a><span class="kr">end</span>
+<a id="__codelineno-19-45" name="__codelineno-19-45" href="#__codelineno-19-45"></a>
+<a id="__codelineno-19-46" name="__codelineno-19-46" href="#__codelineno-19-46"></a><span class="kr">function</span><span class="w"> </span><span class="nc">Flee</span><span class="p">:</span><span class="nf">_runAway</span><span class="p">()</span>
+<a id="__codelineno-19-47" name="__codelineno-19-47" href="#__codelineno-19-47"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">threatRoot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">_threat</span><span class="p">:</span><span class="nf">FindFirstChild</span><span class="p">(</span><span class="s2">&quot;HumanoidRootPart&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-48" name="__codelineno-19-48" href="#__codelineno-19-48"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">threatRoot</span><span class="w"> </span><span class="kr">then</span><span class="w"> </span><span class="kr">return</span><span class="w"> </span><span class="kr">end</span>
+<a id="__codelineno-19-49" name="__codelineno-19-49" href="#__codelineno-19-49"></a>
+<a id="__codelineno-19-50" name="__codelineno-19-50" href="#__codelineno-19-50"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">awayDir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">_puppet</span><span class="p">.</span><span class="py">RootPart</span><span class="p">.</span><span class="py">Position</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">threatRoot</span><span class="p">.</span><span class="py">Position</span><span class="p">).</span><span class="nv">Unit</span>
+<a id="__codelineno-19-51" name="__codelineno-19-51" href="#__codelineno-19-51"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">fleeTarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">_puppet</span><span class="p">.</span><span class="py">RootPart</span><span class="p">.</span><span class="py">Position</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">awayDir</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">30</span>
+<a id="__codelineno-19-52" name="__codelineno-19-52" href="#__codelineno-19-52"></a><span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">Movement</span><span class="p">:</span><span class="nf">WalkTo</span><span class="p">(</span><span class="nv">fleeTarget</span><span class="p">)</span>
+<a id="__codelineno-19-53" name="__codelineno-19-53" href="#__codelineno-19-53"></a><span class="kr">end</span>
+<a id="__codelineno-19-54" name="__codelineno-19-54" href="#__codelineno-19-54"></a>
+<a id="__codelineno-19-55" name="__codelineno-19-55" href="#__codelineno-19-55"></a><span class="kr">function</span><span class="w"> </span><span class="nc">Flee</span><span class="p">:</span><span class="nf">Destroy</span><span class="p">()</span>
+<a id="__codelineno-19-56" name="__codelineno-19-56" href="#__codelineno-19-56"></a><span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">Movement</span><span class="p">:</span><span class="nf">Stop</span><span class="p">()</span>
+<a id="__codelineno-19-57" name="__codelineno-19-57" href="#__codelineno-19-57"></a><span class="kr">end</span>
+<a id="__codelineno-19-58" name="__codelineno-19-58" href="#__codelineno-19-58"></a>
+<a id="__codelineno-19-59" name="__codelineno-19-59" href="#__codelineno-19-59"></a><span class="kr">return</span><span class="w"> </span><span class="nv">Flee</span>
+</code></pre></div>
+<p>Because it's inside the <code>Components</code> folder, you can use it immediately without registering:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nv">npc</span><span class="p">:</span><span class="nf">SetAction</span><span class="p">(</span><span class="s2">&quot;Flee&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">threat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">enemyModel</span><span class="p">,</span><span class="w"> </span><span class="nv">fleeDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="p">})</span>
+</code></pre></div>
+<p>Both approaches produce the same result — the component works identically either way. Use <code>registerComponent</code> to keep game-specific code separate from the framework. Use the drop-in folder for components generic enough to ship with Puppet.</p>
+<hr />
+<h2 id="11-optimization-and-replication">11. Optimization and replication</h2>
+<h3 id="puppets-overhead">Puppet's overhead</h3>
+<p>Puppet itself is lightweight. All NPCs share a single <code>RunService.Heartbeat</code> connection at 30hz. Components state are just Lua tables. Signals are cheap. The framework adds almost nothing on top of what Roblox already costs per NPC.</p>
+<p>The real bottleneck is Roblox's automatic replication. Every Humanoid model in Workspace is replicated to every client — position, rotation, animations, every property change. At 50+ NPCs this becomes expensive in both bandwidth and client framerate.</p>
+<h3 id="using-a-replication-module">Using a replication module</h3>
+<p>Puppet works alongside custom replication without any changes. The most straightforward option is <a href="https://parihsz.github.io/Chrono/">Chrono</a>, a drop-in replication library that replaces Roblox's default physics replication with efficient custom replication:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Puppet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">require</span><span class="p">(</span><span class="nv">game</span><span class="p">.</span><span class="py">ServerScriptService</span><span class="p">.</span><span class="py">Puppet</span><span class="p">)</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Chrono</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">require</span><span class="p">(</span><span class="nv">path</span><span class="p">.</span><span class="py">to</span><span class="p">.</span><span class="py">Chrono</span><span class="p">)</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="kd">local</span><span class="w"> </span><span class="nv">npc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Puppet</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">npcModel</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">    </span><span class="nv">movement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">walkSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">    </span><span class="nv">patrol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">points</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">ptA</span><span class="p">,</span><span class="w"> </span><span class="nv">ptB</span><span class="p">,</span><span class="w"> </span><span class="nv">ptC</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nv">waitTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="p">})</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="c1">-- Chrono takes over replication for this model</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="nv">Chrono</span><span class="p">:</span><span class="nf">AddEntity</span><span class="p">(</span><span class="nv">npcModel</span><span class="p">)</span>
+</code></pre></div>
+<p>Puppet moves the Humanoid on the server like normal. Chrono handles delivering position, rotation, and animation data to clients efficiently. Nothing in Puppet needs to change.</p>
+<p>For small NPC counts (under ~50), you don't need any of this — Roblox's default replication works fine.</p>
+<h3 id="building-your-own-replication">Building your own replication</h3>
+<p>If you prefer to build custom replication instead of using a dedicated module, Puppet doesn't get in the way. Position and rotation are always available directly from the Model:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">puppet</span><span class="p">.</span><span class="py">RootPart</span><span class="p">.</span><span class="py">Position</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="kd">local</span><span class="w"> </span><span class="nv">lookDirection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">puppet</span><span class="p">.</span><span class="py">RootPart</span><span class="p">.</span><span class="py">CFrame</span><span class="p">.</span><span class="py">LookVector</span>
+</code></pre></div>
+<p>For custom component data that you want on the client (like aggro values or combat state), a recommended pattern is to have components define a <code>GetReplicatedState</code> method. Components that define it opt in — components that don't are skipped:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1">-- In your custom component</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="kr">function</span><span class="w"> </span><span class="nc">Aggro</span><span class="p">:</span><span class="nf">GetReplicatedState</span><span class="p">()</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">        </span><span class="nv">highestThreat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span><span class="p">:</span><span class="nf">GetHighestThreat</span><span class="p">(),</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">        </span><span class="nv">threatCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span><span class="p">:</span><span class="nf">GetThreatCount</span><span class="p">(),</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="kr">end</span>
+</code></pre></div>
+<p>Then collect everything in your replication loop:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">collectNpcState</span><span class="p">(</span><span class="nv">puppet</span><span class="p">)</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">        </span><span class="nv">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">puppet</span><span class="p">.</span><span class="py">RootPart</span><span class="p">.</span><span class="py">Position</span><span class="p">,</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">        </span><span class="nv">rotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">puppet</span><span class="p">.</span><span class="py">RootPart</span><span class="p">.</span><span class="py">CFrame</span><span class="p">.</span><span class="py">LookVector</span><span class="p">,</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">name</span><span class="p">,</span><span class="w"> </span><span class="nv">component</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">puppet</span><span class="p">.</span><span class="py">_components</span><span class="w"> </span><span class="kr">do</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="nv">component</span><span class="p">.</span><span class="py">GetReplicatedState</span><span class="w"> </span><span class="kr">then</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="w">            </span><span class="nv">state</span><span class="p">[</span><span class="nv">name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">component</span><span class="p">:</span><span class="nf">GetReplicatedState</span><span class="p">()</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="w">        </span><span class="kr">end</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="w">    </span><span class="kr">end</span>
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">puppet</span><span class="p">.</span><span class="py">_action</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">puppet</span><span class="p">.</span><span class="py">_action</span><span class="p">.</span><span class="py">GetReplicatedState</span><span class="w"> </span><span class="kr">then</span>
+<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a><span class="w">        </span><span class="nv">state</span><span class="p">[</span><span class="nv">puppet</span><span class="p">.</span><span class="py">_action</span><span class="p">.</span><span class="py">Name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">puppet</span><span class="p">.</span><span class="py">_action</span><span class="p">:</span><span class="nf">GetReplicatedState</span><span class="p">()</span>
+<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="w">    </span><span class="kr">end</span>
+<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>
+<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a><span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">state</span>
+<a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a><span class="kr">end</span>
+</code></pre></div>
+<p>This isn't built into Puppet — it's a pattern. The collection logic lives in your game code, and you choose how and when to send it to clients.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
