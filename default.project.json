@@ -5,10 +5,8 @@
         "ServerScriptService": {
             "Puppet": {
                 "$path": "src/Puppet"
-            },
-            "PuppetTest": {
-                "$path": "test/PuppetTest.server.luau"
             }
         }
     }
 }
+
