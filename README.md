@@ -13,7 +13,18 @@
 
 ---
 
-Puppet is an NPC framework where at its base, provides the basic capabilities that most NPCs share — movement, pathfinding, perception, patrol, wander, and follow. You compose behaviors from these components and orchestrate them to fit your game's specific needs.
+Puppet is an NPC framework where at its base, provides the basic capabilities that most NPCs share which are divided into two types (Core and Action), which at its base include — movement, pathfinding, perception, patrol, wander and follow. You compose behaviors from these components and orchestrate them to fit your game's specific needs.
+
+## Base Components
+
+| Component | Type | What it does |
+|-----------|------|-------------|
+| **Movement** | Core | Pathfinding, WalkTo, stuck detection |
+| **Perception** | Core | Vision cone, threat tracking, hearing |
+| **Patrol** | Action | Loops through waypoints |
+| **Wander** | Action | Picks random points in a radius |
+| **Follow** | Action | Tails a target model |
+| **Idle** | Action | Does nothing |
 
 ## Quick start
 
@@ -40,17 +51,6 @@ Want it to chase them? Swap the action:
 ```lua
 npc:SetAction("Follow", { target = intruder, distance = 5 })
 ```
-
-## Components
-
-| Component | Type | What it does |
-|-----------|------|-------------|
-| **Movement** | Core | Pathfinding, WalkTo, stuck detection |
-| **Perception** | Core | Vision cone, threat tracking, hearing |
-| **Patrol** | Action | Loops through waypoints |
-| **Wander** | Action | Picks random points in a radius |
-| **Follow** | Action | Tails a target model |
-| **Idle** | Action | Does nothing (placeholder) |
 
 ## Links
 
