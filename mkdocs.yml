@@ -1,0 +1,42 @@
+site_name: Puppet
+site_description: A modular NPC framework for Roblox.
+site_url: ""
+repo_url: https://github.com/CrossBeast/Puppet
+repo_name: CrossBeast/Puppet
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: custom
+    accent: custom
+  logo: assets/logo.png
+  favicon: assets/logo.png
+  font: false
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - toc.integrate
+
+nav:
+  - Home: index.md
+  - API: api.md
+  - Tutorial: tutorial.md
+  - Troubleshooting: troubleshooting.md
+
+extra_css:
+  - https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap
+  - stylesheets/custom.css
+
+markdown_extensions:
+  - tables
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - attr_list
+  - md_in_html
+
