@@ -2,4 +2,11 @@
 *.rbxlx
 *.rbxm
 *.rbxmx
+*.rbxl.lock
 .DS_Store
+site/
+.venv/
+__pycache__/
+*.pyc
+design-comparison.html
+
