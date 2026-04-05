@@ -1,12 +1,17 @@
+# Roblox place files
 *.rbxl
 *.rbxlx
 *.rbxm
 *.rbxmx
 *.rbxl.lock
+
+# macOS
 .DS_Store
+
+# MkDocs build output
 site/
+
+# Python virtual environment
 .venv/
 __pycache__/
 *.pyc
-design-comparison.html
-
