@@ -25,6 +25,7 @@ nav:
   - API: api.md
   - Tutorial: tutorial.md
   - Troubleshooting: troubleshooting.md
+  - Changelog: changelog.md
 
 extra_css:
   - https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap
