@@ -1,0 +1,487 @@
+/* ============================================
+   PUPPET DOCS — Neon Theme for MkDocs Material
+   ============================================ */
+
+:root {
+  --n-bg: #0c0d12;
+  --n-surface: #12131a;
+  --n-border: #1f2030;
+  --n-text: #a1a1aa;
+  --n-bright: #fafafa;
+  --n-pink: #f472b6;
+  --n-cyan: #22d3ee;
+  --n-purple: #a78bfa;
+  --n-yellow: #fbbf24;
+  --n-muted: #52525b;
+}
+
+/* --- Base overrides (dark mode) --- */
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: var(--n-bg);
+  --md-default-fg-color: var(--n-text);
+  --md-default-fg-color--light: var(--n-muted);
+  --md-default-fg-color--lighter: #3a3a4a;
+  --md-default-fg-color--lightest: var(--n-border);
+  --md-primary-fg-color: var(--n-bg);
+  --md-primary-bg-color: var(--n-bright);
+  --md-accent-fg-color: var(--n-cyan);
+  --md-typeset-color: var(--n-text);
+  --md-typeset-a-color: var(--n-cyan);
+  --md-code-bg-color: #16171f;
+  --md-code-fg-color: #eff1f5;
+  --md-code-hl-color: rgba(244, 114, 182, 0.1);
+}
+
+/* --- Background with colored glows + grid --- */
+[data-md-color-scheme="slate"] .md-main {
+  background:
+    radial-gradient(ellipse at 15% 10%, rgba(244, 114, 182, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 60%, rgba(34, 211, 238, 0.05) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 90%, rgba(167, 139, 250, 0.04) 0%, transparent 40%),
+    var(--n-bg);
+  background-attachment: fixed;
+}
+
+[data-md-color-scheme="slate"] .md-content {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* --- Header & Tabs --- */
+[data-md-color-scheme="slate"] .md-header {
+  background: rgba(12, 13, 18, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--n-border);
+  box-shadow: none;
+  height: 2.8rem;
+}
+
+.md-header__inner {
+  height: 2.8rem;
+}
+
+.md-logo {
+  overflow: visible;
+}
+
+[data-md-color-scheme="slate"] .md-tabs {
+  background: rgba(12, 13, 18, 0.85);
+  border-bottom: 1px solid var(--n-border);
+}
+
+[data-md-color-scheme="slate"] .md-tabs__link {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 500;
+  font-size: 0.76rem;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+[data-md-color-scheme="slate"] .md-tabs__link:hover,
+[data-md-color-scheme="slate"] .md-tabs__link--active {
+  opacity: 1;
+}
+
+/* --- Typography --- */
+.md-typeset {
+  font-family: 'Archivo', sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: var(--n-text);
+}
+
+.md-typeset h1 {
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.15 !important;
+  margin-bottom: 0.1em !important;
+}
+
+/* Force gradient via separate rule to avoid cascade issues */
+[data-md-color-scheme="slate"] .md-typeset h1,
+[data-md-color-scheme="slate"] .md-content .md-typeset h1,
+[data-md-color-scheme] article h1,
+.md-content h1#puppet {
+  color: transparent !important;
+  background-image: linear-gradient(to right, #f472b6, #a78bfa, #22d3ee) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Subtitle text right after h1 */
+.md-typeset h1 + p {
+  color: #71717a;
+  margin-top: 0.5em;
+  font-size: 0.78rem;
+}
+
+.md-typeset h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  color: var(--n-bright);
+  letter-spacing: -0.02em;
+  margin-top: 2em;
+  padding-bottom: 0.4em;
+  border-bottom: 1px solid var(--n-border);
+}
+
+.md-typeset h3 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600;
+  color: var(--n-cyan);
+}
+
+.md-typeset strong {
+  color: var(--n-bright);
+}
+
+.md-typeset a {
+  color: var(--n-cyan);
+}
+
+.md-typeset a:hover {
+  color: var(--n-pink);
+}
+
+
+/* --- Lists --- */
+.md-typeset ul > li::marker {
+  color: var(--n-pink);
+}
+
+.md-typeset ol > li::marker {
+  color: var(--n-cyan);
+}
+
+/* --- Code blocks --- */
+.md-typeset pre {
+  background: var(--n-surface) !important;
+  border: 1px solid var(--n-border);
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 0 24px rgba(244, 114, 182, 0.04), 0 0 48px rgba(34, 211, 238, 0.03);
+  overflow: hidden;
+}
+
+/* Gradient left border on code blocks */
+.md-typeset pre::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--n-pink), var(--n-cyan));
+  z-index: 1;
+}
+
+.md-typeset code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82em;
+}
+
+/* Inline code */
+.md-typeset :not(pre) > code {
+  background: var(--n-surface);
+  border: 1px solid var(--n-border);
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+  color: var(--n-cyan);
+}
+
+/* Brighten ALL dim code tokens */
+.highlight .c, .highlight .c1, .highlight .cm, .highlight .ch, .highlight .cs,
+.highlight .sd, .highlight .sh,
+.md-typeset code .c, .md-typeset code .c1, .md-typeset code .cm {
+  color: #8b91a0 !important;
+}
+
+/* General code text — variables, identifiers */
+.highlight .n, .highlight .nb, .highlight .no, .highlight .ni, .highlight .ne,
+.highlight .nv, .highlight .nx, .highlight .nt, .highlight .py,
+.md-typeset code .n, .md-typeset code .nb, .md-typeset code .nv {
+  color: #d0d4dc !important;
+}
+
+/* Punctuation, operators, whitespace */
+.highlight .p, .highlight .o, .highlight .w,
+.md-typeset code .p, .md-typeset code .o, .md-typeset code .w {
+  color: #c0c4cc !important;
+}
+
+/* Functions / method calls */
+.highlight .nf, .highlight .fm,
+.md-typeset code .nf, .md-typeset code .fm {
+  color: #82aaff !important;
+}
+
+/* Catch-all for any unstyled code spans */
+.highlight code, .highlight pre, .highlight span:not([class]) {
+  color: #d0d4dc !important;
+}
+
+/* Back to top button */
+.md-top {
+  color: var(--n-text) !important;
+}
+
+/* Luau syntax colors — keywords including and/or/not */
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt,
+.highlight .ow,
+.md-typeset code .k, .md-typeset code .kd, .md-typeset code .ow {
+  color: #c792ea !important;
+}
+
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl,
+.md-typeset code .s, .md-typeset code .s1, .md-typeset code .s2 {
+  color: #86efac !important;
+}
+
+.highlight .mi, .highlight .mf, .highlight .mh, .highlight .mo, .highlight .mb, .highlight .il,
+.md-typeset code .mi, .md-typeset code .mf {
+  color: #f78c6c !important;
+}
+
+.highlight .nf, .highlight .fm,
+.md-typeset code .nf {
+  color: #82aaff !important;
+}
+
+/* Logo size */
+.md-logo img,
+.md-header__button.md-logo img,
+[data-md-component="logo"] img {
+  height: 2.4rem !important;
+  width: auto !important;
+}
+
+/* Header site name — match page title style */
+.md-header .md-header__topic .md-ellipsis {
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 800 !important;
+  background: -webkit-linear-gradient(left, #f472b6, #a78bfa, #22d3ee) !important;
+  background: linear-gradient(90deg, #f472b6, #a78bfa, #22d3ee) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Copy button */
+.md-clipboard,
+.md-code__button {
+  color: #71717a !important;
+}
+
+.md-clipboard:hover,
+.md-code__button:hover {
+  color: var(--n-cyan) !important;
+}
+
+/* Copy notification tooltip */
+.md-clipboard::after,
+.md-code__button::after {
+  color: var(--n-bright) !important;
+  background: var(--n-surface) !important;
+  border: 1px solid var(--n-border) !important;
+}
+
+/* Copied notification snackbar */
+.md-dialog {
+  background: var(--n-surface) !important;
+  color: var(--n-bright) !important;
+  border: 1px solid var(--n-border) !important;
+}
+
+/* Code block copy icon - make it visible against code bg */
+[data-md-color-scheme="slate"] .highlight button {
+  color: #71717a !important;
+  opacity: 1 !important;
+}
+
+[data-md-color-scheme="slate"] .highlight button:hover {
+  color: var(--n-cyan) !important;
+}
+
+[data-md-color-scheme="slate"] .highlight button::after {
+  color: var(--n-bright) !important;
+  background: var(--n-surface) !important;
+}
+
+/* --- Tables (borderless, like neon design) --- */
+.md-typeset table:not([class]) {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  border-collapse: collapse;
+}
+
+.md-typeset table:not([class]) thead {
+  background: transparent;
+}
+
+.md-typeset table:not([class]) th {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--n-pink);
+  border-bottom: 1px solid var(--n-border);
+  padding: 0.8em 1.2em 0.8em 0;
+}
+
+.md-typeset table:not([class]) td {
+  border-bottom: 1px solid var(--n-border);
+  padding: 0.8em 1.2em 0.8em 0;
+}
+
+.md-typeset table:not([class]) tr:last-child td {
+  border-bottom: none;
+}
+
+.md-typeset table:not([class]) tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* --- Horizontal rules --- */
+.md-typeset hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--n-border), transparent);
+  margin: 2.5em 0;
+}
+
+/* --- Sidebar --- */
+[data-md-color-scheme="slate"] .md-sidebar {
+  background: transparent;
+}
+
+.md-sidebar--secondary {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.md-sidebar--primary .md-sidebar__inner {
+  padding-left: 0;
+}
+
+/* Pull the TOC sidebar flush left */
+.md-sidebar--secondary .md-sidebar__inner {
+  padding-left: 0;
+}
+
+.md-sidebar .md-nav {
+  padding-left: 0;
+}
+
+/* --- Type badges for component table --- */
+.type-badge {
+  display: inline-block;
+  font-family: 'Archivo', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+.type-core {
+  background: rgba(34, 211, 238, 0.1);
+  color: #22d3ee;
+  border: 1px solid rgba(34, 211, 238, 0.25);
+}
+
+.type-action {
+  background: rgba(167, 139, 250, 0.1);
+  color: #a78bfa;
+  border: 1px solid rgba(167, 139, 250, 0.25);
+}
+
+[data-md-color-scheme="slate"] .md-nav__link {
+  font-family: 'Archivo', sans-serif;
+}
+
+[data-md-color-scheme="slate"] .md-nav__link--active {
+  color: var(--n-cyan) !important;
+  font-weight: 600;
+}
+
+/* --- Search --- */
+[data-md-color-scheme="slate"] .md-search__input {
+  background: var(--n-surface);
+  border: 1px solid var(--n-border);
+}
+
+[data-md-color-scheme="slate"] .md-search__input:focus {
+  border-color: var(--n-cyan);
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.15);
+}
+
+/* Extra bottom padding so last TOC items can highlight */
+.md-content__inner {
+  padding-bottom: 60vh;
+}
+
+/* --- Footer --- */
+[data-md-color-scheme="slate"] .md-footer {
+  background: var(--n-bg);
+  border-top: 1px solid var(--n-border);
+}
+
+/* --- Blockquotes / Notes --- */
+.md-typeset blockquote {
+  color: var(--n-text) !important;
+  border-left-color: var(--n-border) !important;
+}
+
+.md-typeset blockquote p {
+  color: var(--n-text) !important;
+}
+
+/* --- Scrollbar (dark only) --- */
+[data-md-color-scheme="slate"] ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+[data-md-color-scheme="slate"] ::-webkit-scrollbar-track {
+  background: var(--n-bg);
+}
+[data-md-color-scheme="slate"] ::-webkit-scrollbar-thumb {
+  background: var(--n-border);
+  border-radius: 3px;
+}
+[data-md-color-scheme="slate"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--n-muted);
+}
+
+/* --- Header: GitHub left of search, logo flush left --- */
+.md-header__inner {
+  display: flex;
+  align-items: center;
+}
+
+.md-search {
+  order: 0;
+}
+
+.md-header__source {
+  order: 1;
+}
+
+.md-header__button.md-logo {
+  margin-left: 0;
+  padding-left: 0.4rem;
+}
+
+.md-source {
+  color: var(--n-text) !important;
+}
+
+.md-source:hover {
+  color: var(--n-cyan) !important;
+}
