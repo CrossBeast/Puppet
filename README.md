@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/logo.png" alt="Puppet" width="80">
+  <img src="docs/assets/logo.png" alt="Puppet" width="160">
 </p>
 
 <h1 align="center">Puppet</h1>
