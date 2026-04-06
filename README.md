@@ -4,7 +4,7 @@
 
 <h1 align="center">Puppet</h1>
 
-<p align="center">A composition-based NPC framework for Roblox.</p>
+<p align="center">A composition-based NPC framework for Roblox</p>
 
 <p align="center">
   <a href="https://crossbeast.github.io/Puppet/">Documentation</a> &middot;
