@@ -33,7 +33,7 @@ local npc = Puppet.new(npcModel, {
 })
 ```
 
-Config keys are **case-insensitive** (`movement`, `Movement`, and `MOVEMENT` all work).
+Config keys are **case-insensitive** (`movement`, `Movement` and `MOVEMENT` all work).
 
 Core components are created first (in dependency order), then the action is set. Only one action can be specified in the config — if multiple are given, the last one wins with a warning.
 
@@ -73,7 +73,7 @@ Changes the update rate for all Puppets. Default and recommended is **30hz** —
 |-----------|------|-------------|
 | `hz` | `number` | Updates per second. Must be > 0. |
 
-Higher values (e.g. 60hz) make NPC reactions snappier and movement smoother, but cost more CPU since every component updates more frequently. Lower values (e.g. 10hz) are cheaper on performance but NPCs will feel less responsive — perception scans less often, stuck detection reacts slower, and actions update less frequently. 30hz is a good balance between responsiveness and performance for most games.
+Higher values (e.g. 60hz) make NPC reactions snappier and movement smoother, but cost more CPU since every component updates more frequently. Lower values (e.g. 10hz) are cheaper on performance but NPCs will feel less responsive — perception scans less often, stuck detection reacts slower and actions update less frequently. 30hz is a good balance between responsiveness and performance for most games.
 
 ---
 
@@ -209,7 +209,7 @@ Removes the current action without setting a new one. The NPC will have no activ
 PuppetObject:Reconfigure(config)
 ```
 
-Replaces the entire component setup in one call. Removes components not in the new config, updates existing ones via `SetConfig`, adds new ones, and sets a new action.
+Replaces the entire component setup in one call. Removes components not in the new config, updates existing ones via `SetConfig`, adds new ones and sets a new action.
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -245,7 +245,7 @@ Destroys the Puppet. Cleans up all components, disconnects all internal connecti
 
 **Type:** Core
 
-Handles pathfinding, direct movement, stuck detection, and walk speed.
+Handles pathfinding, direct movement, stuck detection and walk speed.
 
 #### Config
 
@@ -328,7 +328,7 @@ This prevents the common issue of targets escaping just by jumping behind the NP
 
 **`:CanSee(target, overrideAngle?) --> boolean`**
 
-Checks if the target Model is within range, within the vision cone, and has clear line of sight. Optionally override the angle for custom checks.
+Checks if the target Model is within range, within the vision cone and has clear line of sight. Optionally override the angle for custom checks.
 
 **`:CanHear(position) --> boolean`**
 

@@ -1,5 +1,5 @@
 site_name: Puppet
-site_description: A modular NPC framework for Roblox.
+site_description: A composition-based NPC framework for Roblox.
 site_url: ""
 repo_url: https://github.com/CrossBeast/Puppet
 repo_name: CrossBeast/Puppet

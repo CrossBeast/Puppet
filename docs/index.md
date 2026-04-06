@@ -1,8 +1,8 @@
 # Puppet
 
-A modular NPC framework for Roblox.
+A composition-based NPC framework for Roblox.
 
-Puppet is an NPC framework where at its base, provides the basic capabilities that most NPCs share — movement, pathfinding, perception, patrol, wander, and follow. You compose behaviors from these components and orchestrate them to fit your game's specific needs.
+Puppet is an NPC framework where at its base, provides the basic capabilities that most NPCs share — movement, pathfinding, perception, patrol, wander and follow. You compose behaviors from these components and orchestrate them to fit your game's specific needs.
 
 ---
 
@@ -35,7 +35,7 @@ Puppet already covers the common behavioral components most NPCs might need:
 | **Follow** | <span class="type-badge type-action">ACTION</span> | Tails a target model |
 | **Idle** | <span class="type-badge type-action">ACTION</span> | Does nothing (placeholder action) |
 
-Components can declare dependencies and automatically inject them. Patrol, Wander, and Follow all require Movement — they use it to move the NPC. Components communicate through [Signals](https://sleitnick.github.io/RbxUtil/api/Signal/) — your code listens and decides what to do.
+Components can declare dependencies and automatically inject them. Patrol, Wander and Follow all require Movement — they use it to move the NPC. Components communicate through [Signals](https://sleitnick.github.io/RbxUtil/api/Signal/) — your code listens and decides what to do.
 
 ### Centralized updates
 

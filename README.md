@@ -4,7 +4,7 @@
 
 <h1 align="center">Puppet</h1>
 
-<p align="center">A modular NPC framework for Roblox.</p>
+<p align="center">A composition-based NPC framework for Roblox.</p>
 
 <p align="center">
   <a href="https://crossbeast.github.io/Puppet/">Documentation</a> &middot;
@@ -29,7 +29,7 @@ Puppet is an NPC framework where at its base, provides the basic capabilities th
 ## Quick start
 
 ```lua
-local Puppet = require(game.ServerScriptService.Puppet)
+local Puppet = require(game.ServerStorage.Puppet)
 
 local npc = Puppet.new(npcModel, {
     movement = { walkSpeed = 14 },

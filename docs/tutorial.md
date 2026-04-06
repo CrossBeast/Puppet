@@ -4,12 +4,12 @@
 
 ## Getting Started
 
-Download Puppet from [GitHub](https://github.com/CrossBeast/Puppet) or the [Roblox Creator Store](https://create.roblox.com/store/asset/139690896215004/Puppet). Place the `Puppet` module in `ServerScriptService`.
+Download Puppet from [GitHub](https://github.com/CrossBeast/Puppet) or the [Roblox Creator Store](https://create.roblox.com/store/asset/139690896215004/Puppet). Place the `Puppet` module in `ServerStorage`.
 
 Then require it from any server script:
 
 ```lua
-local Puppet = require(game.ServerScriptService.Puppet)
+local Puppet = require(game.ServerStorage.Puppet)
 ```
 
 > Puppet runs on the **server only**. All NPC logic is server-authoritative.
@@ -19,7 +19,7 @@ local Puppet = require(game.ServerScriptService.Puppet)
 ## 1. Your first NPC — Patrol
 
 ```lua
-local Puppet = require(game.ServerScriptService.Puppet)
+local Puppet = require(game.ServerStorage.Puppet)
 
 -- Any Model with a Humanoid + HumanoidRootPart works
 local npcModel = workspace.GuardNPC
@@ -211,7 +211,7 @@ end)
 
 ## 7. Reconfigure — changing everything at once
 
-`Reconfigure` replaces the entire component setup in one call. It removes components not in the new config, updates existing ones, adds new ones, and sets a new action. An example use case is NPC bosses with different phases that call for different behaviors:
+`Reconfigure` replaces the entire component setup in one call. It removes components not in the new config, updates existing ones, adds new ones and sets a new action. An example use case is NPC bosses with different phases that call for different behaviors:
 
 ```lua
 local npc = Puppet.new(bossModel, {
@@ -269,7 +269,7 @@ npc:AddComponent("Perception", { visionRange = 40, threatTags = { "Player" } })
 npc:RemoveComponent("Perception")
 ```
 
-These are useful when you want to modify one part of the NPC without affecting the rest. `Reconfigure` is better when you're changing multiple things at once — like swapping out the action, updating movement speed, and adding/removing components all in one call.
+These are useful when you want to modify one part of the NPC without affecting the rest. `Reconfigure` is better when you're changing multiple things at once — like swapping out the action, updating movement speed and adding/removing components all in one call.
 
 Note: `RemoveComponent` will error if another component or the active action depends on it. Clear the dependent action first:
 
@@ -340,7 +340,7 @@ end)
 
 Puppet is expandable — you can create your own Core and Action components.
 
-A component must have: `Name`, `Type` (`"Core"` or `"Action"`), `new()`, `Init()`, and `Destroy()`. Optionally: `Update(dt)`, `SetConfig(config)`, and `Requires` (a list of dependency names).
+A component must have: `Name`, `Type` (`"Core"` or `"Action"`), `new()`, `Init()` and `Destroy()`. Optionally: `Update(dt)`, `SetConfig(config)` and `Requires` (a list of dependency names).
 
 ### Register from outside
 
@@ -351,7 +351,7 @@ This example creates an **Aggro** component — a Core component that tracks how
 ```lua
 -- ServerScriptService.MyGame.Aggro
 
-local Signal = require(game.ServerScriptService.Puppet.Packages.Signal)
+local Signal = require(game.ServerStorage.Puppet.Packages.Signal)
 
 local Aggro = {}
 Aggro.__index = Aggro
@@ -406,7 +406,7 @@ return Aggro
 Register it in your game script before creating Puppets that use it:
 
 ```lua
-local Puppet = require(game.ServerScriptService.Puppet)
+local Puppet = require(game.ServerStorage.Puppet)
 local Aggro = require(game.ServerScriptService.MyGame.Aggro)
 
 Puppet.registerComponent("Aggro", Aggro)
@@ -520,7 +520,7 @@ The real bottleneck is Roblox's automatic replication. Every Humanoid model in W
 Puppet works alongside custom replication without any changes. The most straightforward option is [Chrono](https://parihsz.github.io/Chrono/), a drop-in replication library that replaces Roblox's default physics replication with efficient custom replication:
 
 ```lua
-local Puppet = require(game.ServerScriptService.Puppet)
+local Puppet = require(game.ServerStorage.Puppet)
 local Chrono = require(path.to.Chrono)
 
 local npc = Puppet.new(npcModel, {
@@ -532,7 +532,7 @@ local npc = Puppet.new(npcModel, {
 Chrono:AddEntity(npcModel)
 ```
 
-Puppet moves the Humanoid on the server like normal. Chrono handles delivering position, rotation, and animation data to clients efficiently. Nothing in Puppet needs to change.
+Puppet moves the Humanoid on the server like normal. Chrono handles delivering position, rotation and animation data to clients efficiently. Nothing in Puppet needs to change.
 
 For small NPC counts (under ~50), you don't need any of this — Roblox's default replication works fine.
 

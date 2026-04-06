@@ -78,7 +78,7 @@ npc:RemoveComponent("Movement") -- now safe
 
 ### SetAction during an Update causes deferred behavior
 
-If you call `SetAction`, `ClearAction`, `AddComponent`, or `RemoveComponent` while components are being updated (inside an `Update` call), the change is **deferred** — it queues up and applies after the current update cycle finishes.
+If you call `SetAction`, `ClearAction`, `AddComponent` or `RemoveComponent` while components are being updated (inside an `Update` call), the change is **deferred** — it queues up and applies after the current update cycle finishes.
 
 This is automatic and usually invisible. But if you need a change to apply immediately (like `Reconfigure` for boss phases), use `Reconfigure` — it bypasses deferral.
 
