@@ -24,7 +24,7 @@ Puppet is an NPC framework where at its base, provides the basic capabilities th
 | **Patrol** | Action | Loops through waypoints |
 | **Wander** | Action | Picks random points in a radius |
 | **Follow** | Action | Tails a target model |
-| **Idle** | Action | Does nothing |
+| **Idle** | Action | No Action |
 
 ## Quick start
 
