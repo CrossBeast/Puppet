@@ -1,11 +1,16 @@
--- Puppet — Composition-Based NPC System
--- Entry point. Auto-discovers built-in components and exposes public API.
+--[[ A composition-based NPC framework (CrossBeast) ]] --
+
+--[[
+	Entry point for Puppet
+	- Auto registers built-in components
+	- Exposes public API
+]]
 
 local PuppetObject = require(script.PuppetObject)
 local PuppetUpdater = require(script.PuppetUpdater)
 local ComponentRegistry = require(script.ComponentRegistry)
+local Types = require(script.Types)
 
--- Auto-discover and register all built-in components
 for _, module in script.Components:GetDescendants() do
 	if module:IsA("ModuleScript") then
 		local componentClass = require(module)
@@ -13,9 +18,13 @@ for _, module in script.Components:GetDescendants() do
 	end
 end
 
+export type PuppetObject = Types.PuppetObject
+export type Movement = Types.Movement
+export type Perception = Types.Perception
+
 local Puppet = {}
 
-function Puppet.new(model: Model, config: { [string]: any }?): any
+function Puppet.new(model: Model, config: { [string]: any }?): PuppetObject
 	return PuppetObject.new(model, config)
 end
 
@@ -32,4 +41,3 @@ function Puppet.getTickRate(): number
 end
 
 return Puppet
-
