@@ -17,14 +17,15 @@ Puppet is an NPC framework where at its base, provides the basic capabilities th
 
 ## Base Components
 
-| Component | Type | What it does |
-|-----------|------|-------------|
-| **Movement** | Core | Pathfinding, WalkTo, stuck detection |
-| **Perception** | Core | Vision cone, threat tracking, hearing |
-| **Patrol** | Action | Loops through waypoints |
-| **Wander** | Action | Picks random points in a radius |
-| **Follow** | Action | Tails a target model |
-| **Idle** | Action | No action |
+**Core**
+- **Movement** — Pathfinding, WalkTo, stuck detection
+- **Perception** — Vision cone, threat tracking, hearing
+
+**Action**
+- **Patrol** — Loops through waypoints
+- **Wander** — Picks random points in a radius
+- **Follow** — Tails a target model
+- **Idle** — Does nothing (placeholder action)
 
 ## Quick start
 
