@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/logo.png" alt="Puppet" width="200">
+  <img src="docs/assets/logo.png" alt="Puppet" width="240">
 </p>
 
 <h1 align="center">Puppet</h1>
@@ -13,7 +13,7 @@
 
 ---
 
-Puppet is an NPC framework where at its base, provides the basic capabilities that most NPCs share which are divided into two types (Core and Action), which at its base include — movement, pathfinding, perception, patrol, wander and follow. You compose behaviors from these components and orchestrate them to fit your game's specific needs.
+Puppet is an NPC framework where at its base, provides the basic capabilities that most NPCs share which are divided into two types - core and action. At its base include — movement, pathfinding, perception, patrol, wander and follow. You compose behaviors from these components and orchestrate them to fit your game's specific needs.
 
 ## Base Components
 
@@ -24,7 +24,7 @@ Puppet is an NPC framework where at its base, provides the basic capabilities th
 | **Patrol** | Action | Loops through waypoints |
 | **Wander** | Action | Picks random points in a radius |
 | **Follow** | Action | Tails a target model |
-| **Idle** | Action | No Action |
+| **Idle** | Action | No action |
 
 ## Quick start
 
