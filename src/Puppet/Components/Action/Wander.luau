@@ -1,3 +1,10 @@
+--[[
+	Wander (Action)
+	- Random points within a radius
+	- Ground raycast to validate destinations
+	- Requires Movement
+]]
+
 local Wander = {}
 Wander.__index = Wander
 

@@ -1,14 +1,17 @@
--- Manages registration, validation, and lookup of component classes.
--- Built-in components are registered internally by init.luau.
--- Custom components are registered by the developer via Puppet.registerComponent().
+--[[
+	Component registry
+	- Registration, validation and lookup
+	- Built-ins from init, customs from registerComponent
+	- Case-insensitive config keys
+]]
 
 local ComponentRegistry = {}
 
 local builtInComponents = {}
 local customComponents = {}
-local configKeyMap = {} -- lowercase -> PascalCase
+local configKeyMap = {}
 
-local builtInNames = {} -- populated dynamically by _registerBuiltIn
+local builtInNames = {}
 
 local function validateComponentClass(name, componentClass)
 	assert(type(name) == "string" and #name > 0,
@@ -30,10 +33,12 @@ local function validateComponentClass(name, componentClass)
 
 	if componentClass.Requires then
 		assert(type(componentClass.Requires) == "table",
-			string.format("[Puppet] Component '%s' Requires must be a table", name))
+			string.format("[Puppet] Component '%s' Requires must be a table", name)
+		)
 		for _, req in componentClass.Requires do
 			assert(type(req) == "string",
-				string.format("[Puppet] Component '%s' Requires entries must be strings", name))
+				string.format("[Puppet] Component '%s' Requires entries must be strings", name)
+			)
 		end
 	end
 end

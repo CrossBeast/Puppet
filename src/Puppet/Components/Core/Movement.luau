@@ -1,3 +1,10 @@
+--[[
+	Movement (Core)
+	- Pathfinding + direct-move optimization
+	- Stuck detection with retries and jump recovery
+	- Signals: ReachedDestination, Stuck
+]]
+
 local PathfindingService = game:GetService("PathfindingService")
 local Signal = require(script.Parent.Parent.Parent.Packages.Signal)
 
@@ -89,14 +96,12 @@ function Movement:WalkTo(position: Vector3): boolean
 
 	self._destination = position
 
-	-- If already doing a direct move, just redirect seamlessly (no recompute)
 	if self._isMoving and not self._currentPath then
 		self._waypoints = { { Position = position, Action = Enum.PathWaypointAction.Walk } }
 		self._waypointIndex = 1
 		return true
 	end
 
-	-- Throttle path recomputation
 	local now = tick()
 	if self._isMoving and (now - self._lastPathCompute) < REPATH_COOLDOWN then
 		return true

@@ -1,6 +1,8 @@
--- Centralized update loop for all Puppet instances.
--- Single RunService.Heartbeat connection, fixed tick rate.
--- Internal module — developers never interact with this directly.
+--[[
+	Update loop
+	- Single Heartbeat shared by all Puppets
+	- Fixed tick rate, default 30hz
+]]
 
 local RunService = game:GetService("RunService")
 
@@ -42,7 +44,6 @@ RunService.Heartbeat:Connect(function(dt)
 				continue
 			end
 
-			-- Auto-destroy if critical parts are missing
 			local model = puppet.Model
 			local humanoid = puppet.Humanoid
 			local rootPart = puppet.RootPart
@@ -56,7 +57,6 @@ RunService.Heartbeat:Connect(function(dt)
 
 			puppet._updating = true
 
-			-- Update core components
 			for _, component in puppet._components do
 				if component.Update then
 					local ok, err = pcall(component.Update, component, tickRate)
@@ -67,7 +67,6 @@ RunService.Heartbeat:Connect(function(dt)
 				end
 			end
 
-			-- Update active action
 			local action = puppet._action
 			if action and action.Update then
 				local ok, err = pcall(action.Update, action, tickRate)

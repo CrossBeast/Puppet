@@ -1,4 +1,9 @@
--- The Puppet class. Container for components, manages lifecycle.
+--[[
+	Puppet class
+	- Manages components and their lifecycle
+	- Dependency resolution and deferred changes
+	- One object per Model
+]]
 
 local HttpService = game:GetService("HttpService")
 
@@ -44,12 +49,10 @@ function PuppetObject.new(model: Model, config: { [string]: any }?)
 	self.ActionChanged = Signal.new()
 	self.Destroyed = Signal.new()
 
-	-- Auto-cleanup on model destruction
 	self._trove:Add(model.Destroying:Connect(function()
 		self:Destroy()
 	end))
 
-	-- Auto-cleanup on humanoid death (Died + HealthChanged fallback)
 	self._trove:Add(humanoid.Died:Connect(function()
 		self:Destroy()
 	end))
@@ -75,9 +78,9 @@ function PuppetObject:_processConfig(config)
 	local actionConfig = nil
 
 	for key, value in config do
-		local componentName = ComponentRegistry.resolveConfigKey(key)
+		local componentName = ComponentRegistry.resolveConfigKey(key :: string)
 		if not componentName then
-			warn(string.format("[Puppet] Unknown config key '%s'", key))
+			warn(string.format("[Puppet] Unknown config key '%s'", key :: string))
 			continue
 		end
 
@@ -175,9 +178,9 @@ function PuppetObject:_addComponentInternal(name, componentClass, config)
 		if not dep then
 			error(string.format(
 				'[Puppet] "%s" requires "%s", but it hasn\'t been added.',
-				name, reqName))
+				name, reqName :: string))
 		end
-		component[reqName] = dep
+		component[reqName :: string] = dep
 	end
 
 	self._components[name] = component
@@ -304,9 +307,9 @@ function PuppetObject:SetAction(name: string, config: { [string]: any }?)
 		if not dep then
 			error(string.format(
 				'[Puppet] "%s" requires "%s", but it hasn\'t been added.',
-				name, reqName))
+				name, reqName :: string))
 		end
-		component[reqName] = dep
+		component[reqName :: string] = dep
 	end
 
 	self._action = component
@@ -349,9 +352,9 @@ function PuppetObject:Reconfigure(config: { [string]: any })
 	local newActionConfig = nil
 
 	for key, value in config do
-		local componentName = ComponentRegistry.resolveConfigKey(key)
+		local componentName = ComponentRegistry.resolveConfigKey(key :: string)
 		if not componentName then
-			warn(string.format("[Puppet] Unknown config key '%s'", key))
+			warn(string.format("[Puppet] Unknown config key '%s'", key :: string))
 			continue
 		end
 
@@ -371,7 +374,6 @@ function PuppetObject:Reconfigure(config: { [string]: any })
 	local wasUpdating = self._updating
 	self._updating = false
 
-	-- Clear current action directly
 	local previousActionName = self._action and self._action.Name or nil
 	if self._action then
 		self._action:Destroy()
@@ -381,7 +383,6 @@ function PuppetObject:Reconfigure(config: { [string]: any })
 		self.ActionChanged:Fire(previousActionName, nil)
 	end
 
-	-- Remove cores not in new config
 	local toRemove = {}
 	for name in self._components do
 		if not newCores[name] then
@@ -396,7 +397,6 @@ function PuppetObject:Reconfigure(config: { [string]: any })
 		end
 	end
 
-	-- Update existing cores
 	for name, newConfig in newCores do
 		local existing = self._components[name]
 		if existing and existing.SetConfig then
@@ -404,7 +404,6 @@ function PuppetObject:Reconfigure(config: { [string]: any })
 		end
 	end
 
-	-- Add new cores in dependency order
 	local coreEntries = {}
 	for name, coreConfig in newCores do
 		if not self._components[name] then
@@ -422,12 +421,10 @@ function PuppetObject:Reconfigure(config: { [string]: any })
 		self:_createCoresInOrder(coreEntries)
 	end
 
-	-- Set new action
 	if newActionName then
 		self:SetAction(newActionName, newActionConfig)
 	end
 
-	-- Restore updating state
 	self._updating = wasUpdating
 end
 

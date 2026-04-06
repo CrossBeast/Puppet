@@ -1,3 +1,10 @@
+--[[
+	Patrol (Action)
+	- Cycles through waypoints
+	- Configurable wait time
+	- Requires Movement
+]]
+
 local Patrol = {}
 Patrol.__index = Patrol
 

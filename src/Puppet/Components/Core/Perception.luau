@@ -1,3 +1,10 @@
+--[[
+	Perception (Core)
+	- Vision cone, configurable angle and range
+	- Wider tracking for already-spotted targets
+	- Signals: ThreatSpotted, ThreatLost
+]]
+
 local CollectionService = game:GetService("CollectionService")
 local Signal = require(script.Parent.Parent.Parent.Packages.Signal)
 

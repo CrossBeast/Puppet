@@ -1,3 +1,9 @@
+--[[
+	Idle (Action)
+	- Does nothing
+	- Default placeholder action
+]]
+
 local Idle = {}
 Idle.__index = Idle
 Idle.Name = "Idle"

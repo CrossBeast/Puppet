@@ -1,3 +1,10 @@
+--[[
+	Follow (Action)
+	- Tails a target at a set distance
+	- Buffer zone to prevent micro-stepping
+	- Requires Movement
+]]
+
 local Follow = {}
 Follow.__index = Follow
 
@@ -50,7 +57,6 @@ function Follow:Update(dt: number)
 	local selfPos = self._puppet.RootPart.Position
 	local distance = (selfPos - targetPos).Magnitude
 
-	-- Within follow distance — stop and hold
 	if distance <= self._distance then
 		if self.Movement:IsMoving() then
 			self.Movement:Stop()
@@ -58,12 +64,10 @@ function Follow:Update(dt: number)
 		return
 	end
 
-	-- Within buffer zone and already stopped — don't micro-step
 	if distance <= self._distance + REPATH_THRESHOLD and not self.Movement:IsMoving() then
 		return
 	end
 
-	-- Only repath if target moved significantly or we're not moving
 	local targetMoved = not self._lastTargetPosition
 		or (targetPos - self._lastTargetPosition).Magnitude > REPATH_THRESHOLD
 	local needsRepath = targetMoved or not self.Movement:IsMoving()
