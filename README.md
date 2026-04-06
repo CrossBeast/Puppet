@@ -13,7 +13,7 @@
 
 ---
 
-Puppet is an NPC framework where at its base, provides the basic capabilities that most NPCs share which are divided into two types - core and action. At its base include — movement, pathfinding, perception, patrol, wander and follow. You compose behaviors from these components and orchestrate them to fit your game's specific needs.
+Puppet is an NPC framework where at its base, provides the basic capabilities that most NPCs share which are divided into two types - core and action. At its base include — movement, pathfinding, perception, patrol, wander and follow. Developers compose behaviors from these components and orchestrate them to fit your game's specific needs.
 
 ## Base Components
 
@@ -55,7 +55,7 @@ npc:SetAction("Follow", { target = intruder, distance = 5 })
 ## Links
 
 - [Documentation](https://crossbeast.github.io/Puppet/) — Full API reference, tutorial, and troubleshooting
-- [Roblox Creator Store](https://create.roblox.com/store/asset/139690896215004/Puppet) — Install directly into Studio
+- [Roblox Creator Store](https://create.roblox.com/store/asset/139690896215004/Puppet) — Puppet from Roblox Marketplace
 
 ## Credits
 
